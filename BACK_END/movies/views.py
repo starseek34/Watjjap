@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import ReviewListSerializer, ReviewSerializer
 from .models import Review
@@ -16,8 +17,9 @@ def movie_detail(request, movie_pk):
     serializer = ReviewSerializer(movie)
     return Response(serializer.data)
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_movie(request):
-    serializer = MovieSerializer(data=request.data)
+    serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
-        serializer.save()
+        serializer.save(user=request.user)
         return Response(serializer.data)
