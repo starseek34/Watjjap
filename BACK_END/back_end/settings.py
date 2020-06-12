@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
 
     # My apps
-    'articles',
     'accounts',
+    'movies',
 
     'corsheaders',
 ]
