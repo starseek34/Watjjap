@@ -6,6 +6,7 @@ import Home from '../views/Home.vue'
 // movies
 import RecommendMovieView from '../views/movies/RecommendMovieView.vue'
 import MovieSearchListView from '../views/movies/MovieSearchListView.vue'
+import MovieDetailView from '../views/movies/MovieDetailView.vue'
 
 // accounts
 import MyPageView from '../views/accounts/MyPageView.vue'
@@ -32,6 +33,11 @@ Vue.use(VueRouter)
     path: '/movies/search',
     name: 'MovieSearchList',
     component: MovieSearchListView,
+  },
+  {
+    path: '/movies/detail',
+    name: 'MovieDetail',
+    component: MovieDetailView,
   },
 ]
 
