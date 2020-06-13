@@ -5,17 +5,19 @@ from accounts.models import User
 
 f = Faker()
 class Movie(models.Model):
-    title = models.CharField(max_length=200)
-    pubDate =models.DateTimeField()
-    country = models.CharField(max_length=200)
-    genre = models.CharField(max_length=200)
-    userRating = models.IntegerField()
-    actor = models.CharField(max_length=200)
-    director = models.CharField(max_length=200)
-    poster1 = models.CharField(max_length=200)
-    poster2 = models.CharField(max_length=200)
-    link = models.CharField(max_length=200)
-    runningTime = models.IntegerField()
+    title = models.CharField(max_length=200,default='')
+    link = models.CharField(max_length=200,default='',blank=True,null=True,)
+    image = models.CharField(max_length=200, null=True, blank=True,default='')
+    image2 = models.CharField(max_length=200, null=True, blank=True,default='')
+    subtitle = models.CharField(max_length=200,default='',blank=True,null=True)
+    pubDate =models.CharField(max_length=10,default='',blank=True,null=True)
+    director = models.CharField(max_length=200,default='',blank=True,null=True)
+    actor = models.CharField(max_length=200,default='',blank=True,null=True)
+    userRating = models.CharField(max_length=10,default='',blank=True,null=True)
+    
+    country = models.CharField(max_length=200, null=True, blank=True,default='')
+    genre = models.CharField(max_length=200, null=True, blank=True,default='')
+    runningTime = models.CharField(max_length=10, null=True, blank=True,default='')
     # user와 n:m관계
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     @classmethod
@@ -35,32 +37,3 @@ class Movie(models.Model):
                 runningTime = 3,
             )
 
-
-class Review(models.Model):
-    #Movie랑 1:n관계
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    #user랑 1:n관계
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    @classmethod
-    def dummy(cls, n):
-        from accounts.models import User
-        for _ in range(n):
-            cls.objects.create(
-                movie = Movie.objects.get(pk=2),
-                user = User.objects.get(pk=1),
-                title = f.name(),
-                content = f.name()
-            )
-
-class Comment(models.Model):
-    #Review랑 1:n관계
-    review = models.ForeignKey(Review, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
