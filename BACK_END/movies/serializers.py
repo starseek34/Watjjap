@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Review, Movie, 
+from .models import Review, Movie, Comment
 from accounts.serializers import UserSerializer
 
 #movie
