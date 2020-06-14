@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark d-flex">
-      <a class="navbar-brand" href="#">
-      <router-link :to="{ name: 'Home' }">WAJJAB</router-link>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#" >
+      <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
       </a> 
       <!-- search -->
       <div class="">
@@ -38,10 +38,15 @@
       </div>
     </nav>
 
-    <SearchBar v-if="true" />    
-    <router-view />
-    <div id="h">
-      hi
+    <hr>
+    <div class="w-100" style="position:fixed; top:380px;" >
+      
+      <SearchBar  class="w-50 my-auto" v-if="true" />
+    
+    </div>
+      
+    <div class="container">
+      <router-view />
     </div>
   </div>
 </template>
@@ -58,16 +63,17 @@ export default {
 </script>
 
 <style>
+html, body{
+  height:100%;
+}
 #app {
-  height: 400px;
-  background-color:green;
-  /*background-image: url('./assets/background.jpg');
+  background-image: url('./assets/background.jpg');
   background-size: cover;
   height: 400px;
-  margin: 0; */
+  margin: 0;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
+</style>

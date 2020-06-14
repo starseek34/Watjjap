@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input @keypress.enter="onInput" type="text" placeholder="작품 제목, 배우, 감독을 검색해보세요.">
+    <input @keypress.enter="onInput" type="text"  class="form-control" placeholder="작품 제목, 배우, 감독을 검색해보세요.">
   </div>
 </template>
 
