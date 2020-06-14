@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from .serializers import MovieListSerializer, MovieSerializer
 from .models import Movie
 
+# TEST GIT
 
 # 네이버 api에 영화검색 요청
 def search(request,inputValue):
