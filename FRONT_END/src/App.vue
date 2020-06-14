@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <div id="nav" v-if="true">
+    <div id="nav" v-show="false">
       <router-link :to="{ name: 'Home' }">WAJJAB</router-link>
       <SearchBar />
       <router-link :to="{ name: 'RecommendMovie' }">즐겨찾기</router-link>
