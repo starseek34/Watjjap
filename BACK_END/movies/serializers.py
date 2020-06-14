@@ -1,31 +1,20 @@
 from rest_framework import serializers
-from .models import Review, Movie, 
+from .models import Movie
 from accounts.serializers import UserSerializer
 
 #movie
 class MovieSerializer(serializers.ModelSerializer):
-    class Meta:
+   class Meta:
+        pubDate=serializers.CharField(required=False)
+        userRating=serializers.CharField(required=False)
+       
         model = Movie
-        fields = '__all__'
+        fields = ['title','link','image','subtitle','pubDate','director','actor','userRating']
 
 class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = '__all__'
-#review
-class ReviewListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = ['id', 'title', 'created_at']
+        fields = ['title','link','image','subtitle','pubDate','director','actor','userRating']
 
-class ReviewSerializer(serializers.ModelSerializer):
-    user = UserSerializer(required=False)
-    class Meta:
-        model = Review
-        fields = '__all__'
-#comment
-class CommentListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = ['content','created_at']
+
 
