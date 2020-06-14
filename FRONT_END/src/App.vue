@@ -4,18 +4,13 @@
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
       </a> 
-      <!-- search -->
-      <div class="">
-      <a class="nav-item nav-link" href="#">
-        <SearchBar v-if="true" />
-      </a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
   
-      <div class="" id="navbarNavAltMarkup">
-        <div class="navbar-nav ">          
+      <div class="w-100" id="navbarNavAltMarkup">
+        <div class="d-flex justify-content-end">
+            <!-- search -->
+            <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
+              <SearchBar v-if="true"  />
+            </a>                
             <a class="nav-item nav-link" href="#">
             <button type="button" class="border-0 bg-transparent text-white" data-toggle="modal" data-target="#loginModal">
               로그인
@@ -27,11 +22,11 @@
             </button>
           </a>
           <a class="nav-item nav-link" href="#">
-            <router-link :to="{ name: 'RecommendMovie' }"><i class="fa fa-star" aria-hidden="true"></i></router-link>
+            <router-link :to="{ name: 'RecommendMovie' }"><i class="fa fa-star"  style="font-size:40px;" aria-hidden="true"></i></router-link>
           </a>
           <a class="nav-item nav-link " href="#">
             
-          <router-link :to="{ name: 'MyPage' }"><i class="fa fa-user-circle-o" aria-hidden="true"></i></router-link>
+          <router-link :to="{ name: 'MyPage' }"><i class="fa fa-user-circle-o" style="font-size:40px;" aria-hidden="true"></i></router-link>
           </a>
       
         </div>
@@ -39,15 +34,15 @@
     </nav>
 
     <hr>
-    <div class="w-100" style="position:fixed; top:380px;" >
-      
-      <SearchBar  class="w-50 my-auto" v-if="true" />
-    
+    <div style="font-size:90px; color:#f71972; margin-top:50px;" class="text-center">WAJJAB</div>
+    <div class="w-100" style="position:fixed; top:380px;" >  
+      <SearchBar  class="w-50 ml-auto mr-auto" v-if="true" />    
     </div>
-      
+    
     <div class="container">
       <router-view />
     </div>
+    
   </div>
 </template>
 
