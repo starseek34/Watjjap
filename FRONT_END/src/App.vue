@@ -1,12 +1,25 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app" class="container">
+    <div id="nav" v-if="true">
+      <router-link :to="{ name: 'Home' }">WAJJAB</router-link>
+      <SearchBar />
+      <router-link :to="{ name: 'RecommendMovie' }">즐겨찾기</router-link>
+      <router-link :to="{ name: 'MyPage' }">마이페이지</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+<script>
+import SearchBar from './components/SearchBar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    SearchBar
+  }
+}
+</script>
 
 <style>
 #app {
