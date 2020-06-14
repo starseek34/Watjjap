@@ -1,6 +1,6 @@
 <template>
   <div>
-<!-- Login Button trigger modal -->
+    <!-- Login Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
       로그인
     </button>
