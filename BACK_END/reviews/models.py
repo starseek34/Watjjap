@@ -20,8 +20,8 @@ class Review(models.Model):
         from accounts.models import User
         for _ in range(n):
             cls.objects.create(
-                movie = Movie.objects.get(pk=1),
-                user = User.objects.get(pk=1),
+                movie = Movie.objects.get(pk=48),
+                user = User.objects.get(pk=2),
                 title = f.name(),
                 content = f.name()
             )

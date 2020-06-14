@@ -18,6 +18,7 @@ class Movie(models.Model):
     country = models.CharField(max_length=200, null=True, blank=True,default='')
     genre = models.CharField(max_length=200, null=True, blank=True,default='')
     runningTime = models.CharField(max_length=10, null=True, blank=True,default='')
+    plot = models.TextField(null=True, blank=True,default='')
     # user와 n:m관계
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     @classmethod
@@ -25,15 +26,17 @@ class Movie(models.Model):
         for _ in range(n):
             cls.objects.create(
                 title = f.name(),
-                pubDate = '2020-6-09',
+                link = 'linklink',
+                image = 'poster1',
+                image2 = 'poster2',
+                subtitle = 'subtitle',
+                pubDate = '2020',
+                director = 'emma',
+                actor = 'stone',
+                userRating = 4,
+                
                 country = 'us',
                 genre = 'horror',
-                userRating = 4,
-                actor = 'stone',
-                director = 'emma',
-                poster1 = 'poster1',
-                poster2 = 'poster2',
-                link = 'linklink',
                 runningTime = 3,
             )
 
