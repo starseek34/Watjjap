@@ -28,6 +28,7 @@ def review(request, movie_pk, review_pk):
 def new_review(request, movie_pk): 
 # 해당 영화에 대한 새 리뷰
 # url: /movies/movie_pk/new_review/
+    print(request.data)
     serializer = ReviewSerializer(data=request.data)
     #reqeust.data에서 영화pk까지 같이 넘겨줘야함
     if serializer.is_valid(raise_exception=True):

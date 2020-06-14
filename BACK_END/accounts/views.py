@@ -15,7 +15,6 @@ from .models import User
 def remove_user(request, user_pk):
 # 회원삭제기능
 # url: /accounts/user/user_pk/delete
-    print('here')
     user = get_object_or_404(User, pk=user_pk)
     user.delete()
     return JsonResponse({"ok": True}, safe=False)
