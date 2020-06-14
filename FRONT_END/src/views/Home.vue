@@ -1,5 +1,6 @@
 <template>
   <div>
+ 
 <!-- Login Button trigger modal -->
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
