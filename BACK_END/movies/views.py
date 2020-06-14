@@ -9,6 +9,9 @@ from django.http import JsonResponse
 from .serializers import MovieListSerializer, MovieSerializer
 from .models import Movie
 
+from bs4 import BeautifulSoup
+import re
+
 # TEST GIT
 
 # 네이버 api에 영화검색 요청
@@ -26,11 +29,43 @@ def search(request,inputValue):
     return JsonResponse(res['items'],safe=False)
 
 # 해당영화클릭하는순간, 저장되는
-def save_movie():
-    # 저장하는곳.
-    # link비교해서 존재안하면, 저장함.
-    # 그뒤에 movie 함수 실행시켜줌.
-    pass
+@api_view(['GET'])
+def save_movie(request):
+    link = request.data['link']
+    try:
+        movie = Movie.objects.get(link=link)
+    except Movie.DoesNotExist:
+        req = requests.get(link)
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+
+        #줄거리
+        plot = re.findall('"con_tx">(.*?)</p>',str(soup.select('#content > div.article > div.section_group.section_group_frst > div:nth-child(1) > div > div.story_area > p')))[0]
+        #장르
+        genres = re.findall('>(.*?)<', str(soup.select('#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(2) > p > span:nth-child(1)')))
+        genre = ""
+        for i in range(len(genres)):
+            if genres[i]:
+                if len(genres) == 1:
+                    genre = genres[i]
+                elif i == len(genres) - 1:
+                    genre += genres[i]
+                else:
+                    genre += genres[i] + "/"
+        #포스터2
+        image2 = re.findall('src="(.*?)"', str(soup.select('#_MainPhotoArea > div.viewer > div > img')))[0]
+        #러닝타임
+        runningTime = re.findall('>(.*?)<', str(soup.select('#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(2) > p > span:nth-child(3)')))[0]
+        #국가
+        country = re.findall('>(.*?)<', str(soup.select('#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(2) > p > span:nth-child(2) > a')))[0]
+
+        print(plot, genre, image2, runningTime, country)
+        
+        serializer = MovieSerializer(data = request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(plot=plot, genre=genre, image2=image2, runningTime=runningTime, country=country)
+            return Response(serializer.data)
+    return Response(MovieSerializer(movie).data)
 
 @api_view(['GET'])
 def movie(request, movie_pk):

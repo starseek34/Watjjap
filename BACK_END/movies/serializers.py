@@ -9,7 +9,7 @@ class MovieSerializer(serializers.ModelSerializer):
         userRating=serializers.CharField(required=False)
        
         model = Movie
-        fields = ['title','link','image','subtitle','pubDate','director','actor','userRating']
+        fields = '__all__'
 
 class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
