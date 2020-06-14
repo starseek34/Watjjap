@@ -11,5 +11,3 @@ urlpatterns = [
     #영화저장
     path('save_movie/', views.save_movie), 
 ]
-    path('save_movie/', views.save_movie),
-]
