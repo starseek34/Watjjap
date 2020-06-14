@@ -25,11 +25,18 @@ def search(request,inputValue):
     return JsonResponse(res['items'],safe=False)
 
 # 해당영화클릭하는순간, 저장되는
-def save_movie():
+@api_view(['GET'])
+def save_movie(request):
     # 저장하는곳.
     # link비교해서 존재안하면, 저장함.
     # 그뒤에 movie 함수 실행시켜줌.
-    pass
+    print("hihi")
+    print(request, request.data)
+    
+    serializer = MovieSerializer(data = request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(country='hsadf')
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def movie(request, movie_pk):
