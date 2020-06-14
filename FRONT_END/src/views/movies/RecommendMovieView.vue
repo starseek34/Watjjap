@@ -8,7 +8,7 @@
       <option value="2">범죄</option>
       <option value="3">액션</option>
     </select>
-    <img src="../../assets/logo.png" alt="">
+    <img src="../../assets/logo.png" alt="영화포스터_추천영화">
     <p>신과 함께: 인과 연</p>
     <p>2017-한국</p>
     <p>***</p>
