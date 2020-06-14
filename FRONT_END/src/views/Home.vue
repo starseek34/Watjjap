@@ -1,10 +1,6 @@
 <template>
   <div>
 <!-- Login Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-      로그인
-    </button>
-
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -35,7 +31,7 @@
               </div> 
               <div style="margin-top:35px;">
                 <hr style="position:relative;">
-                <div style="position:relative; top:-26px; z-index:2; width:60px; font-size:15px; color:#bdbebf; " class="bg-white mx-auto font-weight-bold">OR</div>
+                <div style="position:relative; top:-26px; z-index:2; width:60px; font-size:15px; color:#bdbebf; " class="text-center bg-white mx-auto font-weight-bold">OR</div>
               </div>
               <button type="button" style="background-color:#3b5998;" class="btn w-100 text-white mb-4">
                   <i style="position:relative; left: -65px; top:3px; font-size:27px; display:inline;" class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -47,9 +43,7 @@
     </div>
 
     <!-- Signup Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
-      회원가입
-    </button>
+    
 
     <!-- Signup Modal -->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -79,7 +73,7 @@
               </div> 
               <div style="margin-top:35px;">
                 <hr style="position:relative;">
-                <div style="position:relative; top:-26px; z-index:2; width:60px; font-size:15px; color:#bdbebf; " class="bg-white mx-auto font-weight-bold">OR</div>
+                <div style="position:relative; top:-26px; z-index:2; width:60px; font-size:15px; color:#bdbebf; " class="text-center bg-white mx-auto font-weight-bold">OR</div>
               </div>
               <button type="button" style="background-color:#3b5998;" class="btn w-100 text-white mb-4">
                   <i style="position:relative; left: -65px; top:3px; font-size:27px; display:inline;" class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -91,23 +85,15 @@
       </div>
     </div>
 
-    <router-link :to="{ name: 'RecommendMovie' }">즐겨찾기</router-link>
-    <router-link :to="{ name: 'MyPage' }">마이페이지</router-link>
-    <h1>WAJJAB</h1>
-
-    <SearchBar />
-
   </div>
 </template>
 
 <script>
-import SearchBar from '../components/SearchBar.vue'
 
 export default {
   name: 'Home',
   components: {
-    SearchBar
-  }
+   }
 }
 </script>
 
