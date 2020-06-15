@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="class">
+    <ul class="class row">
       <MovieItemDetail :movie='movie' v-for='movie in movies' :key='movie.id' />
     </ul>
   </div>
