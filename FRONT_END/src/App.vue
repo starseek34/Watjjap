@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style=bg_img>
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
@@ -48,7 +48,9 @@ export default {
   name: 'App',
   components: {
     SearchBar,
-  }
+  },
+
+ 
 }
 </script>
 
