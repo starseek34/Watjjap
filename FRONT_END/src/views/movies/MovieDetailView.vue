@@ -3,31 +3,23 @@
     <div class="row">
       <img src="" alt="영화포스터_헤더">
     </div>
-    <MovieInfo />
-
     <div class="row">
+      <div class="col">
+        <img src="" alt="영화포스터_상세보기">
+      </div>
+      <div class="col">
+        <h2>기생충</h2>
+        <h3>2019 - 드라마 - 한국</h3>
+        <p>평점 * 4.3점</p>
+        <hr>
+        <h4>당신의 평점 ****</h4>
+      </div>
+    </div>
+
+    <div>
       <CreateReview />
-      <div>
-        <h2>기본정보</h2>
-        <h3>기생충</h3>
-        <p>이 영화는 ~~~ 영화 줄거리</p>
-        <p>러닝타임</p>
-      </div>
-      <div>
-        영화 예고편 동영상
-      </div>
-      <div>
-        <hr>
-        <h2>기본정보</h2>
-        <p>더보기</p>
-        <p>기생충</p>
-        <p>2019 한국 드라마</p>
-        <p>2시간 11분</p>
-        <p>줄거리~~</p>
-        <hr>
-        <h2>출연/제작</h2>
-        <p>감독 배우 프사들</p>
-      </div>
+      <MovieInfo />
+      <MovieDirectorActor />
       <div>
         영화 예고편 동영상
       </div>
@@ -52,17 +44,18 @@
 
 import MovieInfo from '../../components/MovieInfo.vue'
 import CreateReview from '../../components/CreateReview.vue'
+import MovieDirectorActor from '../../components/MovieDirectorActor.vue'
 
-// const SERVER_URL = 'http://127.0.0.1:8000/movies/'
+// const SERVER_URL = 'http://127.0.0.1:8000/movies/1'
 
 export default {
   name: 'MovieDetailView',
   components: {
-    MovieInfo, CreateReview,
+    MovieInfo, CreateReview, MovieDirectorActor,
   },
   data() {
     return {
-      
+      inputValue: '',
     }
   },
   // props: {

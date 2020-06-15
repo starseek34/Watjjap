@@ -20,7 +20,7 @@ class Movie(models.Model):
     runningTime = models.CharField(max_length=10, null=True, blank=True,default='')
     plot = models.TextField(null=True, blank=True,default='')
     # user와 n:m관계
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies',default='')
     @classmethod
     def dummy(cls, n):
         for _ in range(n):
