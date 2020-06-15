@@ -30,7 +30,7 @@ Vue.use(VueRouter)
     component: MyPageView,
   },
   {
-    path: '/movies/search',
+    path: '/movies/search/:inputValue',
     name: 'MovieSearchList',
     component: MovieSearchListView,
   },
