@@ -33,11 +33,6 @@
       </div>
     </nav>
 
-    <hr>
-    <div style="font-size:90px; color:#f71972; margin-top:50px;" class="text-center">WAJJAB</div>
-    <div class="w-100" style="position:fixed; top:380px;" >  
-      <SearchBar  class="w-50 ml-auto mr-auto" v-if="true" />    
-    </div>
     
     <div class="container">
       <router-view />
@@ -62,7 +57,7 @@ html, body{
   height:100%;
 }
 #app {
-  background-image: url('./assets/background.jpg');
+  /* background-image: url('./assets/background.jpg'); */
   background-size: cover;
   height: 400px;
   margin: 0;
