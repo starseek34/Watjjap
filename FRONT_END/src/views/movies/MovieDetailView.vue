@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div>
+    <!-- <div>
       <CreateReview />
       <MovieInfo />
       <MovieDirectorActor />
@@ -35,38 +35,34 @@
       <div>
         포스터 사진들
       </div>
-    </div>
+    </div> -->
+    <MovieDetailItem :movieInfo='movieInfo'/>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
-import MovieInfo from '../../components/MovieInfo.vue'
-import CreateReview from '../../components/CreateReview.vue'
-import MovieDirectorActor from '../../components/MovieDirectorActor.vue'
+import MovieDetailItem from '../../components/MovieDetailItem.vue'
 
-// const SERVER_URL = 'http://127.0.0.1:8000/movies/1'
+const SERVER_URL = 'http://127.0.0.1:8000/movies/save_movie/'
 
 export default {
   name: 'MovieDetailView',
-  components: {
-    MovieInfo, CreateReview, MovieDirectorActor,
+  components:{
+    MovieDetailItem,
   },
-  data() {
-    return {
-      inputValue: '',
+  data(){
+    return{
+      apiInfo : this.$route.params.movie,
+      movieInfo : {},
     }
   },
-  // props: {
-  //   movie: Object,
-  // },
-  computed: {
-    poster() {
-      return this.movie.poster_url
-    }
+  mounted(){
+    axios.post(SERVER_URL, this.apiInfo, )
+      .then(res => this.movieInfo = res.data)
+      .catch(err => console.error(err))
   }
-
 }
 </script>
 
