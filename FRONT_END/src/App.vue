@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" :style="{ 'background-image': 'url('+bg_img+')' }">
+  <div id="app" :style="{ 'background-image': 'url('+bg_img+');' }">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </nav>
-    <Modal  @submit-login-data="login" @submit-signup-data="signup" :status="status"/>
+    <Modal  @submit-login-data="login" @submit-signup-data="signup" :iserr="iserr" :errMsg="errMsg"/>
     
     <div class="container">
       <router-view  />
@@ -61,7 +61,8 @@ export default {
   },
   data(){
     return{
-      status: "",
+      iserr: false,
+      errMsg: '',
       isLoggedIn: false,
       bg_img: "./assets/background.jpg",
       //bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
@@ -76,10 +77,15 @@ export default {
     login(loginData){
       axios.post(SERVER_URL + '/rest-auth/login/', loginData)
       .then(res => {
+        this.iserr = false
         this.setCookie(res.data.key)
         this.$router.go()
         })
-      .catch(err => console.log(err.response.data))
+      .catch(err => {
+        console.log(err.response.data)
+        this.errMsg = "아이디 또는 비밀번호를 확인해주세요."
+        this.iserr = true
+      })
        
      },
      
@@ -101,7 +107,7 @@ export default {
         .then(() => {
           this.$cookies.remove('auth-token')
           this.isLoggedIn = false
-          this.$router.go()
+          this.$router.push({name: 'Home' })
         })
         .catch(err=> console.log(err.response.data))
     },

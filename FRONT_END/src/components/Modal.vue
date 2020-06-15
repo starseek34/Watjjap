@@ -1,10 +1,18 @@
 <template>
     <!-- Login Button trigger modal -->
   
+    
   <div id="home"> 
     <!-- Login Button trigger modal -->
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div v-if="iserr" class="alert alert-danger w-100 text-center m-0" role="alert" style="position: absolute; bottom:0px; left:0px; z-index: 2;">
+      {{ errMsg }}
+      <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    
       <div class="modal-dialog">
         <div class="modal-content m-auto" style="width:380px;">
           <div class="modal-body">
@@ -17,7 +25,7 @@
                 <input v-model="loginData.password" type="password" class="form-control border-0" style="background-color:#f5f5f5;" id="password" placeholder="비밀번호">
               </div>
                 
-                <a id="a" href="#" @click="login" role="button" class="btn w-100 text-white font-weight-bolder" style="background-color:#f71972" :data-dismiss="status" >로그인</a>
+                <a id="a" href="#" @click="login" role="button" class="btn w-100 text-white font-weight-bolder" style="background-color:#f71972">로그인</a>
               
               <div class="mt-3">
                 <a href="#" class="stretched-link" style="position: relative; color:#f71972;" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">
@@ -104,7 +112,9 @@ export default {
   components: {
    },
   props: {
-    status: null
+    iserr: null,
+    errMsg: String,
+
   },
    data(){
      return {
