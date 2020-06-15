@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>당신의 생각을 리뷰로 남겨보세요</p>
+  <div class="m-3 d-flex justify-content-center">
+    <span class="m-3">당신의 생각을 리뷰로 남겨보세요</span>
     <!-- Review Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
       리뷰작성
@@ -30,6 +30,15 @@
 
 <script>
 export default {
+  name: 'CreateReview',
+  props: {
+    movieInfo: Object,
+  },
+  data() {
+    return {
+
+    }
+  }
 
 }
 </script>
