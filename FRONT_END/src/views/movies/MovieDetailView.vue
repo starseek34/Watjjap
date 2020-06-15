@@ -48,8 +48,12 @@
 </template>
 
 <script>
+// import axios from 'axios'
+
 import MovieInfo from '../../components/MovieInfo.vue'
 import CreateReview from '../../components/CreateReview.vue'
+
+// const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
 export default {
   name: 'MovieDetailView',
