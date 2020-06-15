@@ -38,6 +38,7 @@ Vue.use(VueRouter)
     path: '/movies/detail',
     name: 'MovieDetail',
     component: MovieDetailView,
+    props: {movie: false}
   },
 ]
 
