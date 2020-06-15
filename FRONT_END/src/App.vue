@@ -1,12 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div id="app" class="container">
-    <div id="nav" v-show="true">
-      <router-link :to="{ name: 'Home' }">WAJJAB</router-link>
-      <SearchBar />
-      <router-link :to="{ name: 'RecommendMovie' }">즐겨찾기</router-link>
-      <router-link :to="{ name: 'MyPage' }">마이페이지</router-link>
-=======
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#" >
@@ -44,7 +36,6 @@
     
     <div class="container">
       <router-view />
->>>>>>> 6fd33d432c67c072f234ebcbed5bfc50d52edb8b
     </div>
     
   </div>
