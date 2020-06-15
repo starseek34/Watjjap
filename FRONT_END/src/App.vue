@@ -1,12 +1,43 @@
 <template>
-  <div id="app" class="container">
-    <div id="nav" v-if="true">
-      <router-link :to="{ name: 'Home' }">WAJJAB</router-link>
-      <SearchBar />
-      <router-link :to="{ name: 'RecommendMovie' }">즐겨찾기</router-link>
-      <router-link :to="{ name: 'MyPage' }">마이페이지</router-link>
+  <div id="app" :style=bg_img>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#" >
+      <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
+      </a> 
+  
+      <div class="w-100" id="navbarNavAltMarkup">
+        <div class="d-flex justify-content-end">
+            <!-- search -->
+            <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
+              <SearchBar v-if="true"  />
+            </a>                
+            <a class="nav-item nav-link" href="#">
+            <button type="button" class="border-0 bg-transparent text-white" data-toggle="modal" data-target="#loginModal">
+              로그인
+            </button>
+          </a>
+          <a class="nav-item nav-link" href="#">
+            <button type="button" class="border-0 text-white rounded" style="background-color:#f71972" data-toggle="modal" data-target="#signupModal">
+              회원가입
+            </button>
+          </a>
+          <a class="nav-item nav-link" href="#">
+            <router-link :to="{ name: 'RecommendMovie' }"><i class="fa fa-star"  style="font-size:40px;" aria-hidden="true"></i></router-link>
+          </a>
+          <a class="nav-item nav-link " href="#">
+            
+          <router-link :to="{ name: 'MyPage' }"><i class="fa fa-user-circle-o" style="font-size:40px;" aria-hidden="true"></i></router-link>
+          </a>
+      
+        </div>
+      </div>
+    </nav>
+
+    
+    <div class="container">
+      <router-view />
     </div>
-    <router-view />
+    
   </div>
 </template>
 
@@ -16,30 +47,25 @@ import SearchBar from './components/SearchBar.vue'
 export default {
   name: 'App',
   components: {
-    SearchBar
-  }
+    SearchBar,
+  },
+
+ 
 }
 </script>
 
 <style>
+html, body{
+  height:100%;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  /* background-image: url('./assets/background.jpg'); */
+  background-size: cover;
+  height: 400px;
+  margin: 0;
 }
-
-#nav {
-  padding: 30px;
-}
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

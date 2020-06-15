@@ -1,21 +1,40 @@
 <template>
   <div>
     <h2>검색 결과</h2>
-    <router-link :to="{ name: 'MovieDetail' }">
-      <div>
-        <img src="../../assets/logo.png" alt="">
-        <h4>기생충</h4>
-        <p>2019 - 한국</p>
-        <p>감독 - 봉준호</p>
-        <p>평점 - 4.5</p>
-      </div>
-    </router-link>
+    <SearchBar @input-change='search' />
+    <MovieItem :movies='movies'/>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
+import MovieItem from '../../components/MovieItem.vue'
+import SearchBar from '../../components/SearchBar.vue'
+
+const SERVER_URL = 'http://127.0.0.1:8000/movies/search/'
+
 export default {
-  name: 'MovieSearchListView'
+  name: 'MovieSearchListView',
+  components: {
+    MovieItem,
+    SearchBar,
+  },
+  data(){
+    return {
+      inputValue : '',
+      movies: []
+    }
+  },
+  methods: {
+    search(inputText){
+      this.inputValue = inputText
+      axios.get(SERVER_URL+this.inputValue)
+        .then(res => this.movies = res.data)
+        .catch(err => console.error(err))
+    }
+  }
+
 }
 </script>
 
