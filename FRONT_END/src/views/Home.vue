@@ -1,5 +1,6 @@
 <template>
   <div>
+  <div>
     <!-- Login Button trigger modal -->
 
   <div id="home">
