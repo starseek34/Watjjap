@@ -145,6 +145,6 @@ export default {
   
 <style>
   body {
-    background-color: lightgray;
+    background-color: rgb(236, 236, 236);
   }
 </style>
