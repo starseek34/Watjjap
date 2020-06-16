@@ -41,7 +41,7 @@ Vue.use(VueRouter)
     component: MyPageView,
   },
   {
-    path: '/movies/search',
+    path: '/movies/search/:inputValue',
     name: 'MovieSearchList',
     component: MovieSearchListView,
   },
@@ -49,6 +49,7 @@ Vue.use(VueRouter)
     path: '/movies/detail',
     name: 'MovieDetail',
     component: MovieDetailView,
+    props: {movie: false}
   },
 ]
 

@@ -9,7 +9,7 @@ class MovieSerializer(serializers.ModelSerializer):
         userRating=serializers.CharField(required=False)
        
         model = Movie
-        fields = '__all__'
+        exclude = ['like_users']
 
 class MovieListSerializer(serializers.ModelSerializer):
     class Meta:

@@ -79,7 +79,16 @@ export default {
       .then(res => {
         this.iserr = false
         this.setCookie(res.data.key)
-        this.$router.go()
+        //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
+        const cur_url = document.location.href;
+        console.log(cur_url)
+          if (cur_url == 'http://localhost:8080/#' || cur_url!='http://localhost:8080/movies/detail#' ){
+            this.$router.go()
+          }else if(cur_url=='http://localhost:8080/movies/detail#'){
+            this.$router.push({name: 'Home' })          
+            this.$router.go()
+          }
+
         })
       .catch(err => {
         console.log(err.response.data)
@@ -111,11 +120,10 @@ export default {
         })
         .catch(err=> console.log(err.response.data))
     },
-
   },
   mounted(){
      this.isLoggedIn = this.$cookies.isKey('auth-token')
-  } 
+  },
 }
 </script>
 
