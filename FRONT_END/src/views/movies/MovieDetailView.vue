@@ -56,7 +56,9 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
-const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
+const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
+
+
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 export default {
@@ -71,6 +73,7 @@ export default {
       movieInfo : {},
       videos : [],
       reviews : [],
+      inputValue: '',
     }
   },
   mounted(){
@@ -82,6 +85,19 @@ export default {
           .then(res => this.reviews = res.data)
           .catch(err => console.error(err))
 
+        const movieTitle = this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
+
+        axios.get(API_URL, {
+            params: {
+                key: API_KEY,
+                part: "snippet",
+                type: "video",
+                q: movieTitle + " trailer"
+            }
+        })
+          .then(res => this.videos = res.data.items)
+          .catch(err => console.error(err))
+
         const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
         console.log(oneGenre)
 
@@ -89,17 +105,6 @@ export default {
           .then(res => this.similarMovies = res.data)
           .catch(err => console.error(err))
       })
-      .catch(err => console.error(err))
-
-    axios.get(API_URL, {
-        params: {
-            key: API_KEY,
-            part: "snippet",
-            type: "video",
-            q: this.inputValue + " trailer"
-        }
-    })
-      .then(res => this.videos = res.data.items)
       .catch(err => console.error(err))
   },
   computed: {
