@@ -7,7 +7,7 @@
         </div>
         <div class="col-6 m-3">
           <h2>{{ title }}</h2>
-          <h3>{{ movieInfo.pubDate }} - {{ movieInfo.genre }} - {{ movieInfo.country }}</h3>
+          <h3>{{ movieInfo.pubDate }} - {{ genre }} - {{ country }}</h3>
           <h5>평점 ★ {{ movieInfo.userRating }}점</h5>
         </div>
       </div>
@@ -27,11 +27,13 @@
         </div>
       </div>
       <hr>
-      <h2>코멘트</h2>
-      <h4>{{ reviewCount }}</h4>
-      <p>더보기</p>
       <div class="row">
-        <MovieReview :review="review" v-for="review in cutReviews" :key="review.id"/>
+        <h2 class="col-11">코멘트</h2>
+        <h5 @click="isTotalReviews" class="col-1 stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
+        <h4 class="col-2">총 {{ reviewCount }}개</h4>
+      </div>
+      <div class="row">
+        <MovieReview :review="review" v-for="review in changeReviews" :key="review.id"/>
       </div>
       <hr>
       <h2>비슷한 작품</h2>
@@ -69,12 +71,16 @@ export default {
       videos : [],
       reviews : [],
       imageError : false,
-      defaultImage: require('../../assets/movie_poster_default.jpg')
+      defaultImage: require('../../assets/movie_poster_default.jpg'),
+      reviewFlag : false,
     }
   },
   methods:{
     more_review(){
       this.$router.push('/movies/detail/'+this.movieInfo.id+'/review')
+    },
+    isTotalReviews() {
+      this.reviewFlag = !this.reviewFlag
     }
   },
   mounted(){
@@ -120,11 +126,21 @@ export default {
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
     },
+    genre() {
+      return this.movieInfo.genre.slice(0, -1)
+    },
+    country() {
+      return this.movieInfo.country.replace(/[^가-힣]/gi, "")
+    },
     reviewCount() {
       return this.reviews.length
     },
-    cutReviews() {
-      return this.reviews.slice(0, 2)
+    changeReviews() {
+      if (this.reviewFlag) {
+        return this.reviews.slice(0, 2)
+      } else {
+        return this.reviews
+      }
     }
   },
 }

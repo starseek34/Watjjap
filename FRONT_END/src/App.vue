@@ -66,7 +66,7 @@ export default {
       iserr: false,
       errMsg: '',
       isLoggedIn: false,
-      bg_img: require('./assets/background.jpg'),
+      bg_img: require('./assets/header.jpg'),
       username: '',
       password: '',
       // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
@@ -154,7 +154,7 @@ export default {
      this.password = this.$cookies.get('password')
      if (this.$route.path == "/"){
        this.isvisible = false
-       this.bg_img = require('./assets/background.jpg')
+       this.bg_img = require('./assets/header.jpg')
         document.getElementById('mynav').classList.remove("bg-dark")
      }else{
        this.isvisible = true       
@@ -168,7 +168,7 @@ export default {
     console.log(to.path)
       if (to.path=='/'){
         this.isvisible = false
-         this.bg_img = require('./assets/background.jpg')
+         this.bg_img = require('./assets/header.jpg')
         document.getElementById('mynav').classList.remove("bg-dark")
 
       }else{
@@ -190,7 +190,7 @@ html, body{
   height:100%;
 }
 #app {
-  /* background-image: url('./assets/background.jpg'); */
+  /* background-image: url('./assets/header.jpg'); */
   background-size: cover;
   height: 400px;
   margin: 0;
