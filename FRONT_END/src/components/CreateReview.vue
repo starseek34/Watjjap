@@ -50,14 +50,14 @@ export default {
   data() {
     return {
       reviewData: {
+        movie: this.movieInfo.id,
         title: null,
         content: null,
       }
     }
   },
-  mothods: {
+  methods: {
     createReview() {
-      console.log('성공!!')
       const config = {
         headers: {
           Authorization: `Token ${this.$cookies.get('auth-token')}`

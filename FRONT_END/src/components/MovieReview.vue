@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <h2>코멘트 20000+</h2>
-    <p>더보기</p>
-    <div v-for="review in reviews" :key="review.id">
-      {{ review }}
-    </div>
+  <div class="col-6">
+    <h5>{{ review.user.nickname }}</h5>
+    <hr>
+    <p>{{ review.content }}</p>
+    <hr>
+    <p>엄지 3143 댓글 30</p>
+    <hr>
+    <p>좋아요</p>
   </div>
 </template>
 
@@ -12,7 +14,7 @@
 export default {
   name: 'MovieReview',
   props: {
-      reviews: Array,
+      review: Object,
   },
 }
 </script>
