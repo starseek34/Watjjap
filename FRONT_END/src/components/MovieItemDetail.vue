@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <img :src='poster' alt="poster of movie">
-    {{ movie.title|safe }} ( {{ movie.pubDate }} ) : {{ movie.director }} : {{ movie.actor }} 평점 : {{ movie.userRating }}
+  <div class="card" style="width: 12rem;">
+    <img :src="poster" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ movie.director }} {{ movie.pubDate }}</h6>
+      <p class="card-text"> Naver 평점 : {{movie.userRating}}</p>
+      <button class="btn btn-primary" @click='detail'>Detail</button>
+    </div>
   </div>
 </template>
 
@@ -9,14 +14,20 @@
 export default {
   name: 'MovieItemDetail',
   props: {
+    movies: Array,
     movie: Object,
   },
-  computed:{
+  methods: {
+    detail() {
+      this.$router.push({name:'MovieDetail', params:{movie: this.movie}})
+    },
+  },
+  computed: {
     poster(){
       return this.movie.image
     },
-    naverLink(){
-      return this.movie.link
+    title(){
+      return this.movie.title.replace(/(<([^>]+)>)/ig,"")
     }
   }
 }

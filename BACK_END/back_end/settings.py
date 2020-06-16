@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'accounts',
     'movies',
     'reviews',
-
+    # Cors
     'corsheaders',
 ]
 

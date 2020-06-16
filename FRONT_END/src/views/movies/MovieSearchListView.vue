@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2>검색 결과</h2>
-    <!-- <SearchBar @input-change='search' /> -->
     <MovieItem :movies='movies'/>
   </div>
 </template>
@@ -10,7 +9,6 @@
 import axios from 'axios'
 
 import MovieItem from '../../components/MovieItem.vue'
-import SearchBar from '../../components/SearchBar.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/search/'
 
@@ -18,7 +16,6 @@ export default {
   name: 'MovieSearchListView',
   components: {
     MovieItem,
-    SearchBar,
   },
   props:{
     inputValue: String
@@ -29,10 +26,15 @@ export default {
       movies: []
     }
   },
-  methods: {
-    search(inputText){
-      this.inputValue = inputText
-      axios.get(SERVER_URL+this.inputValue)
+  mounted (){
+    axios.get(SERVER_URL+this.$route.params.inputValue)
+      .then(res => this.movies = res.data)
+      .catch(err => console.error(err))
+  },
+  watch:{
+    '$route'(to, from){
+      console.log(to, from)
+      axios.get(SERVER_URL+this.$route.params.inputValue)
         .then(res => this.movies = res.data)
         .catch(err => console.error(err))
     }

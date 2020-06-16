@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
+import Modal from '../components/Modal.vue'
 
 // movies
 import RecommendMovieView from '../views/movies/RecommendMovieView.vue'
@@ -20,6 +21,16 @@ Vue.use(VueRouter)
     component: Home,
   },
   {
+    path: '/home',
+    name: 'Home2',
+    component: Home,
+  },
+  {
+    path: '/modal',
+    name: 'Modal',
+    component: Modal,
+  },
+  {
     path: '/movies/recommend',
     name: 'RecommendMovie',
     component: RecommendMovieView,
@@ -30,7 +41,7 @@ Vue.use(VueRouter)
     component: MyPageView,
   },
   {
-    path: '/movies/search',
+    path: '/movies/search/:inputValue',
     name: 'MovieSearchList',
     component: MovieSearchListView,
   },
@@ -38,6 +49,7 @@ Vue.use(VueRouter)
     path: '/movies/detail',
     name: 'MovieDetail',
     component: MovieDetailView,
+    props: {movie: false}
   },
 ]
 

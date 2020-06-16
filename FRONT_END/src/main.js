@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueCookies from 'vue-cookies'
+import 'expose-loader?$!expose-loader?jQuery!jquery'
 
 Vue.use(VueCookies)
 

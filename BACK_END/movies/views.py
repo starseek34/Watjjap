@@ -29,8 +29,9 @@ def search(request,inputValue):
     return JsonResponse(res['items'],safe=False)
 
 # 해당영화클릭하는순간, 저장되는
-@api_view(['GET'])
+@api_view(['POST'])
 def save_movie(request):
+    print(request.data)
     link = request.data['link']
     try:
         movie = Movie.objects.get(link=link)
@@ -38,7 +39,6 @@ def save_movie(request):
         req = requests.get(link)
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
-
         #줄거리
         plot = re.findall('"con_tx">(.*?)</p>',str(soup.select('#content > div.article > div.section_group.section_group_frst > div:nth-child(1) > div > div.story_area > p')))[0]
         #장르
@@ -64,7 +64,9 @@ def save_movie(request):
         serializer = MovieSerializer(data = request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save(plot=plot, genre=genre, image2=image2, runningTime=runningTime, country=country)
+            print("hihi")
             return Response(serializer.data)
+    print("hello")
     return Response(MovieSerializer(movie).data)
 
 @api_view(['GET'])
