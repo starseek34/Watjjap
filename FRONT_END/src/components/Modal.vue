@@ -22,7 +22,7 @@
                 <input v-model="loginData.username" type="email" class="form-control border-0" style="background-color:#f5f5f5;" id="username" aria-describedby="emailHelp" placeholder="이메일">
               </div>
               <div class="form-group w-100 mx-auto">
-                <input v-model="loginData.password" type="password" class="form-control border-0" style="background-color:#f5f5f5;" id="password" placeholder="비밀번호">
+                <input @keyup.enter="login" v-model="loginData.password" type="password" class="form-control border-0" style="background-color:#f5f5f5;" id="password" placeholder="비밀번호">
               </div>
                 
                 <a id="a" href="#" @click="login" role="button" class="btn w-100 text-white font-weight-bolder" style="background-color:#f71972">로그인</a>
@@ -74,7 +74,7 @@
               
               </div>
               <div class="form-group w-100 mx-auto">
-                <input v-model="signupData.password2" type="password" class="form-control border-0" style="background-color:#f5f5f5;" id="password2" placeholder="비밀번호">
+                <input @keyup.enter="signup" v-model="signupData.password2" type="password" class="form-control border-0" style="background-color:#f5f5f5;" id="password2" placeholder="비밀번호">
               
               </div>
               
