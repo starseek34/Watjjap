@@ -39,7 +39,7 @@ def search_genre(request, inputValue):
     # print("genrecode :::", genre_dict[inputValue])
     client_id = '1U3YNsKrnM93padDO18r'
     client_secret = '7RbHN9amGw'
-    url = "https://openapi.naver.com/v1/search/movie?query=e&display=5&genre="+genre_dict['inputValue']  # json 결과
+    url = "https://openapi.naver.com/v1/search/movie?query=e&display=6&genre="+genre_dict[inputValue]  # json 결과
     header = {
         "X-Naver-Client-Id":client_id,
         "X-Naver-Client-secret":client_secret

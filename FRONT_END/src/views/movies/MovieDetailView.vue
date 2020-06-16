@@ -34,7 +34,9 @@
       </div>
       <hr>
       <h2>비슷한 작품</h2>
-      <SimilarMovie :similarMovies="similarMovies" v-for="similarMovie in similarMovies" :key="similarMovie.id"/>
+      <div class="row">
+        <SimilarMovie :similarMovie="similarMovie" v-for="similarMovie in similarMovies" :key="similarMovie.title" />
+      </div>
     </div>
     <!-- <MovieDetailItem :movieInfo='movieInfo'/> -->
   </div>
@@ -54,8 +56,6 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
 const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
-
-
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 export default {
