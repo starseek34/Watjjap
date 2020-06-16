@@ -40,11 +40,7 @@
     <Modal  @submit-login-data="login" @submit-signup-data="signup" :iserr="iserr" :errMsg="errMsg"/>
     
     <div class="container">
-<<<<<<< HEAD
-      <router-view :inputValue='inputValue'/>
-=======
       <router-view  />
->>>>>>> e7a26938458746823b4fb16ae14dc5a3b88c9525
     </div>
     
   </div>
@@ -72,18 +68,6 @@ export default {
       //bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
-<<<<<<< HEAD
-  data(){
-    return{
-      inputValue : ''
-    }
-  },
-  methods:{
-    goToSearch(inputText){
-      this.inputValue = inputText
-    }
-  }
-=======
   methods: {
   
      setCookie(token){
@@ -95,7 +79,7 @@ export default {
       .then(res => {
         this.iserr = false
         this.setCookie(res.data.key)
-        this.$router.go()
+        this.$router.push({name:'Home'})
         })
       .catch(err => {
         console.log(err.response.data)
@@ -127,7 +111,6 @@ export default {
         })
         .catch(err=> console.log(err.response.data))
     },
->>>>>>> e7a26938458746823b4fb16ae14dc5a3b88c9525
 
   },
   mounted(){
