@@ -9,8 +9,6 @@
           <h2>{{ title }}</h2>
           <h3>{{ movieInfo.pubDate }} - {{ movieInfo.genre }} - {{ movieInfo.country }}</h3>
           <h5>평점 ★ {{ movieInfo.userRating }}점</h5>
-          <hr>
-          <h4>당신의 평점 ????</h4>
         </div>
       </div>
     </div>
@@ -29,8 +27,10 @@
         </div>
       </div>
       <hr>
-      <div>
-        <MovieReview :reviews="reviews" />
+      <h2>코멘트 20000+</h2>
+      <p>더보기</p>
+      <div class="row">
+        <MovieReview :review="review" v-for="review in reviews" :key="review.id"/>
       </div>
       <hr>
       <h2>비슷한 작품</h2>
@@ -38,14 +38,12 @@
         <SimilarMovie :similarMovie="similarMovie" v-for="similarMovie in similarMovies" :key="similarMovie.title" />
       </div>
     </div>
-    <!-- <MovieDetailItem :movieInfo='movieInfo'/> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
-// import MovieDetailItem from '../../components/MovieDetailItem.vue'
 import CreateReview from '../../components/CreateReview.vue'
 import MovieInfo from '../../components/MovieInfo.vue'
 import MovieDirectorActor from '../../components/MovieDirectorActor.vue'
@@ -72,14 +70,9 @@ export default {
     }
   },
   mounted(){
-    console.log('반가워'+this.$route.params.movieId)
-    axios.get(SERVER_URL + this.$route.params.movieId)
+    axios.get(SERVER_URL + this.$route.params.movieId + '/')
       .then(res => {
         this.movieInfo = res.data
-        console.log(this.movieInfo)
-        axios.get(SERVER_URL + this.movieInfo.id + '/reviews/')
-          .then(res => this.reviews = res.data)
-          .catch(err => console.error(err))
 
         const movieTitle = this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
 
@@ -91,14 +84,24 @@ export default {
                 q: movieTitle + " trailer"
             }
         })
-          .then(res => this.videos = res.data.items)
+          .then(res => {
+            this.videos = res.data.items
+          })
           .catch(err => console.error(err))
 
-        const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
+        const oneGenre = this.movieInfo.genre.split('/')[0]
 
-        axios.get(SERVER_URL + 'search_genre/' + oneGenre)
-          .then(res => this.similarMovies = res.data)
+        axios.get(SERVER_URL + 'search_genre/' + oneGenre + '/')
+          .then(res => {
+            this.similarMovies = res.data
+          })
           .catch(err => console.error(err))
+      })
+      .catch(err => console.error(err))
+
+    axios.get(SERVER_URL + this.$route.params.movieId + '/reviews/')
+      .then(res => {
+        this.reviews = res.data
       })
       .catch(err => console.error(err))
   },
@@ -106,13 +109,10 @@ export default {
     poster(){
       return this.movieInfo.image
     },
-    poster2(){
-      return this.movieInfo.image2
-    },
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
     }
-  }
+  },
 }
 </script>
   
