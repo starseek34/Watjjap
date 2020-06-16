@@ -1,7 +1,7 @@
 <template>
 
-  <div id="app" :style="{ 'background-image': 'url('+bg_img+');' }">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
+    <nav id="mynav" class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
       </a>   
@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
-              <SearchBar v-if="true"  />
+              <SearchBar v-if="isvisible"  />
             </a>                
             <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
               
@@ -25,7 +25,7 @@
           </a>
           <a  @click="logout"  class="nav-item nav-link" href="#" v-if="isLoggedIn">
             <button  type="button" class="border-0 bg-transparent text-white">
-              로그아웃
+              <i style="font-size:40px;" class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
           </a>
           <a class="nav-item nav-link" href="#" v-if="isLoggedIn">
@@ -61,11 +61,11 @@ export default {
   },
   data(){
     return{
+      isvisible: false,
       iserr: false,
       errMsg: '',
       isLoggedIn: false,
-      bg_img: "./assets/background.jpg",
-      //bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
+      bg_img: require('./assets/header.jpg'),
     }
   },
   methods: {
@@ -110,6 +110,7 @@ export default {
       })
       .catch(err => this.errorMessages=err.response.data)
     },
+
     logout(){
       const requestHeaders = {
         headers: {
@@ -128,6 +129,23 @@ export default {
   mounted(){
      this.isLoggedIn = this.$cookies.isKey('auth-token')
   },
+  watch:{
+    '$route'(to){
+      
+    console.log(to.path)
+      if (to.path=='/'){
+        this.bg_img = require('./assets/header.jpg')
+        document.getElementById('mynav').classList.remove("bg-dark")
+        this.isvisible = false
+      }else{
+        this.bg_img = ""
+        document.getElementById('mynav').classList.add("bg-dark")
+        this.isvisible = true
+      }
+      //console.log(to.path)
+      
+    }
+  }
 }
 </script>
 
@@ -136,7 +154,7 @@ html, body{
   height:100%;
 }
 #app {
-  /* background-image: url('./assets/background.jpg'); */
+  /* background-image: url('./assets/header.jpg'); */
   background-size: cover;
   height: 400px;
   margin: 0;
