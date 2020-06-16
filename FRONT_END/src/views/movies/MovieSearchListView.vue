@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>검색 결과</h2>
+  <div class="m-3">
+    <h2 class="p-3">검색 결과</h2>
     <MovieItem :movies='movies'/>
   </div>
 </template>

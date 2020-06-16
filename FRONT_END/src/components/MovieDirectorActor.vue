@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row m-5">
     <div class="col-6 p-2" v-for="director in directors" :key="director.id">
       <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
       <h4>{{ director }}</h4>

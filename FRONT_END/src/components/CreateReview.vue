@@ -1,8 +1,8 @@
 <template>
-  <div class="m-3 d-flex justify-content-center">
-    <span class="m-3">당신의 생각을 리뷰로 남겨보세요</span>
+  <div>
+    <span>당신의 생각을 리뷰로 남겨보세요</span>
     <!-- Review Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
+    <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#reviewModal">
       리뷰작성
     </button>
 

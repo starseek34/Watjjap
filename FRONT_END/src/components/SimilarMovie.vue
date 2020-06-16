@@ -1,8 +1,10 @@
 <template>
-  <div class="col-2">
+  <div class="col-2 m-3 p-2 card">
     <img :src="poster" @error='imageError = true' alt="영화포스터_비슷한작품">
-    <h5>{{ title }}</h5>
-    <p>평점 - {{ similarMovie.userRating }}</p>
+    <div class="card-body">
+      <h5 class="card-title">{{ title }}</h5>
+      <p class="card-text">평점 - {{ similarMovie.userRating }}</p>
+    </div>
   </div>
 </template>
 

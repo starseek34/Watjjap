@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="m-1">
     <h2>기본정보</h2>
-    <h3>{{ title }}</h3>
-    <h4>{{ movieInfo.pubDate }} {{ country }} {{ genre }}</h4>
-    <h4>{{ movieInfo.runningTime }}</h4>
+    <h4>{{ title }}</h4>
+    <h5>{{ movieInfo.pubDate }} {{ country }} {{ genre }}</h5>
+    <h5>{{ movieInfo.runningTime }}</h5>
     <p>{{ plot }}</p>
   </div>
 

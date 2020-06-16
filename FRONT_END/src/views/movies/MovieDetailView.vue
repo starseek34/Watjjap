@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <div>
-      <div class="row">
-        <div class="col-4 d-flex justify-content-end m-3">
-          <img :src="poster" @error='imageError = true' alt="영화포스터_상세보기">
-        </div>
-        <div class="col-6 m-3">
-          <h2>{{ title }}</h2>
-          <h3>{{ movieInfo.pubDate }} - {{ genre }} - {{ country }}</h3>
-          <h5>평점 ★ {{ movieInfo.userRating }}점</h5>
-        </div>
+  <div class="m-3">
+    <div class="row m-3 bg-white">
+      <div class="col-4 d-flex justify-content-end m-3">
+        <img :src="poster" @error='imageError = true' alt="영화포스터_상세보기">
+      </div>
+      <div class="col-6 m-3">
+        <h2>{{ title }}</h2>
+        <h3>{{ movieInfo.pubDate }} - {{ genre }} - {{ country }}</h3>
+        <h5>평점 ★ {{ movieInfo.userRating }}점</h5>
+        <CreateReview :movieInfo='movieInfo' />
       </div>
     </div>
-    <div>
-      <div class="row">
+    <div class="m-3 bg-white">
+      <div class="row p-3">
         <div class="col-8">
-          <CreateReview :movieInfo='movieInfo' />
           <hr>
           <MovieInfo :movieInfo='movieInfo' />
           <hr>
@@ -26,19 +24,21 @@
           <MovieTrailer :video="video" v-for="video in videos" :key="video.etag" />
         </div>
       </div>
-      <hr>
-      <div class="row p-1">
-        <h2 class="col-11">코멘트</h2>
-        <h5 @click="isTotalReviews" class="col-1 stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
-        <h4 class="col-2">총 {{ reviewCount }}개</h4>
+      <div class="m-3">
+        <hr>
+        <h2>코멘트</h2>
+        <h4>총 {{ reviewCount }}개</h4>
+        <h5 @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
       </div>
-      <div class="row">
+      <div class="m-3">
         <MovieReview :review="review" v-for="review in changeReviews" :key="review.id"/>
       </div>
-      <hr>
-      <h2>비슷한 작품</h2>
-      <div class="row">
-        <SimilarMovie :similarMovie="similarMovie" v-for="similarMovie in similarMovies" :key="similarMovie.title" />
+      <div class="m-3">
+        <hr>
+        <h2>비슷한 작품</h2>
+        <div class="row p-3">
+          <SimilarMovie :similarMovie="similarMovie" v-for="similarMovie in similarMovies" :key="similarMovie.title" />
+        </div>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@ export default {
     },
     changeReviews() {
       if (this.reviewFlag) {
-        return this.reviews.slice(0, 2)
+        return this.reviews.slice(0, 1)
       } else {
         return this.reviews
       }
@@ -144,5 +144,7 @@ export default {
 </script>
   
 <style>
-
+  body {
+    background-color: lightgray;
+  }
 </style>
