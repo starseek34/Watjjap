@@ -79,7 +79,6 @@ export default {
       .then(res => {
         this.iserr = false
         this.setCookie(res.data.key)
-<<<<<<< HEAD
         //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
         const cur_url = document.location.href;
         console.log(cur_url)
@@ -90,9 +89,6 @@ export default {
             this.$router.go()
           }
 
-=======
-        this.$router.push({name:'Home'})
->>>>>>> 5c47f915231ac02f9a3da82d3a414604b2f7b9eb
         })
       .catch(err => {
         console.log(err.response.data)
