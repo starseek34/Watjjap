@@ -4,13 +4,13 @@
 
       <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
     <hr>
-    <div v-if="this.$parent.authenticated">
-      <p>Welcome back, !</p>
-    </div>
-    <h3>프로필 사진</h3>
+    <!-- <div v-if="this.$parent.authenticated"> -->
+      <p>Welcome , {{ userinfo.nickname }}!</p>
+    <!-- </div> -->
+    <h3>프로필</h3>
     <hr>
-    <h4>닉네임</h4>
-    <p>프로필이 없습니다.</p>
+    <h4>{{ userinfo.nickname }}</h4>
+    <p>{{ userinfo.username }} </p>
     <hr>
     <h5>취향분석</h5>
     <hr>
@@ -19,17 +19,21 @@
         <p>지금까지 평가한 영화</p>
         <p>304</p>
     </div>
-    
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'MyPageView',
   data(){
     return{
+      userinfo: this.$cookies.get('userinfo')
     }
-  }
+  },
+ methods:{
+ }
+     
 }
 
 </script>

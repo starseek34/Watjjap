@@ -4,8 +4,25 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
 from .models import User
+from django.views.decorators.csrf import csrf_exempt
+
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from .serializers import UserSerializer
 
 # Create your views here.
+import json
+import requests
+
+@api_view(['POST'])
+def mypage(request):
+    res = json.loads(request.body)
+    print(res['id'])
+    myid = res['id']
+    user = get_object_or_404(User, username=myid)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
 
 #회원정보 수정하는 기능
 
