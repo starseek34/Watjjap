@@ -9,11 +9,7 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
-<<<<<<< HEAD
-              <SearchBar v-if="true" />
-=======
               <SearchBar v-if="isvisible"  />
->>>>>>> sam
             </a>                
             <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
               
@@ -70,13 +66,9 @@ export default {
       iserr: false,
       errMsg: '',
       isLoggedIn: false,
-<<<<<<< HEAD
-      bg_img: "./assets/background.jpg",
-=======
       bg_img: require('./assets/background.jpg'),
       username: '',
       password: '',
->>>>>>> sam
       // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
