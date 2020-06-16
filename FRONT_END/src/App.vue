@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
-              <SearchBar v-if="true"  />
+              <SearchBar v-if="true" @input-change="goToSearch" />
             </a>                
             <a class="nav-item nav-link" href="#">
             <button type="button" class="border-0 bg-transparent text-white" data-toggle="modal" data-target="#loginModal">
@@ -35,7 +35,7 @@
 
     
     <div class="container">
-      <router-view />
+      <router-view :inputValue='inputValue'/>
     </div>
     
   </div>
@@ -49,6 +49,16 @@ export default {
   components: {
     SearchBar,
   },
+  data(){
+    return{
+      inputValue : ''
+    }
+  },
+  methods:{
+    goToSearch(inputText){
+      this.inputValue = inputText
+    }
+  }
 
  
 }
