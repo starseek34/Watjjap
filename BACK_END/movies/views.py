@@ -42,6 +42,8 @@ def search_genre(request, inputValue):
     client_secret = '7RbHN9amGw'
     if inputValue == 'rand':
         url = "https://openapi.naver.com/v1/search/movie?query="+vowel[num]+"&display=20&genre="+str(random.randint(1, 20))
+    elif inputValue == '멜로':
+        url = "https://openapi.naver.com/v1/search/movie?query="+vowel[num]+"&display=6&genre="+genre_dict['로맨스']  # json 결과
     else:
         url = "https://openapi.naver.com/v1/search/movie?query="+vowel[num]+"&display=6&genre="+genre_dict[inputValue]  # json 결과
     header = {

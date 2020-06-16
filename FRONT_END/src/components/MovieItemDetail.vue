@@ -1,6 +1,6 @@
 <template>
   <div class="card" style="width: 12rem;">
-    <img :src="poster" class="card-img-top" alt="...">
+    <img :src="poster" @error='imageError = true' class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ movie.director }} {{ movie.pubDate }}</h6>
@@ -24,7 +24,9 @@ export default {
   },
   data() {
     return{
-      movieId: ''
+      movieId: '',
+      imageError : false,
+      defaultImage: require('../assets/movie_poster_default.jpg')
     }
   },
   methods: {
@@ -39,7 +41,7 @@ export default {
   },
   computed: {
     poster(){
-      return this.movie.image
+      return this.imageError ? this.defaultImage : this.movie.image
     },
     title(){
       return this.movie.title.replace(/(<([^>]+)>)/ig,"")

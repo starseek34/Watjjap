@@ -3,7 +3,7 @@
     <div>
       <div class="row">
         <div class="col-4 d-flex justify-content-end m-3">
-          <img :src="poster" alt="영화포스터_상세보기">
+          <img :src="poster" @error='imageError = true' alt="영화포스터_상세보기">
         </div>
         <div class="col-6 m-3">
           <h2>{{ title }}</h2>
@@ -69,6 +69,8 @@ export default {
       movieInfo : {},
       videos : [],
       reviews : [],
+      imageError : false,
+      defaultImage: require('../../assets/movie_poster_default.jpg')
     }
   },
   mounted(){
@@ -104,7 +106,7 @@ export default {
   },
   computed: {
     poster(){
-      return this.movieInfo.image
+      return this.imageError ? this.defaultImage : this.movieInfo.image
     },
     poster2(){
       return this.movieInfo.image2
