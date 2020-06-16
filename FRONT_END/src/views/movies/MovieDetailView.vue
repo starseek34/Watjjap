@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <img style="mw-100" :src="poster" alt="영화포스터_헤더">
-    </div>
-    <div>
       <div class="row">
         <div class="col-4 d-flex justify-content-end m-3">
           <img :src="poster" alt="영화포스터_상세보기">
@@ -56,7 +53,9 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
-const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
+const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
+
+
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 export default {
@@ -71,6 +70,7 @@ export default {
       movieInfo : {},
       videos : [],
       reviews : [],
+      inputValue: '',
     }
   },
   mounted(){
@@ -82,29 +82,33 @@ export default {
           .then(res => this.reviews = res.data)
           .catch(err => console.error(err))
 
-        const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
-        console.log(oneGenre)
+        const movieTitle = this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
 
-        axios.get(SERVER_URL + 'search/' + oneGenre)
+        axios.get(API_URL, {
+            params: {
+                key: API_KEY,
+                part: "snippet",
+                type: "video",
+                q: movieTitle + " trailer"
+            }
+        })
+          .then(res => this.videos = res.data.items)
+          .catch(err => console.error(err))
+
+        const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
+
+        axios.get(SERVER_URL + 'search_genre/' + oneGenre)
           .then(res => this.similarMovies = res.data)
           .catch(err => console.error(err))
       })
-      .catch(err => console.error(err))
-
-    axios.get(API_URL, {
-        params: {
-            key: API_KEY,
-            part: "snippet",
-            type: "video",
-            q: this.inputValue + " trailer"
-        }
-    })
-      .then(res => this.videos = res.data.items)
       .catch(err => console.error(err))
   },
   computed: {
     poster(){
       return this.movieInfo.image
+    },
+    poster2(){
+      return this.movieInfo.image2
     },
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
@@ -112,7 +116,7 @@ export default {
   }
 }
 </script>
-
+  
 <style>
 
 </style>

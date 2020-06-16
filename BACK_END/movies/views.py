@@ -28,6 +28,26 @@ def search(request,inputValue):
     print(res)
     return JsonResponse(res['items'],safe=False)
 
+@api_view(['GET'])
+def search_genre(request, inputValue):
+    genre_dict = {
+        '드라마' : '1', '판타지' : '2', '서부' : '3', '공포': '4', '로맨스': '5', '모험': '6', '스릴러': '7', '느와르': '8', '컬트': '9',
+        '다큐멘터리': '10', '코미디': '11', '가족': '12', '미스터리': '13', '전쟁': '14', '애니메이션': '15', '범죄': '16', '뮤지컬': '17',
+        'SF': '18', '액션': '19', '무협': '20', '에로': '21', '서스펜스': '22', '서사': '23', '블랙코미디': '24', '실험': '25',
+        '영화카툰': '26', '영화음악': '27', '영화패러디포스터': '28'
+    }
+    # print("genrecode :::", genre_dict[inputValue])
+    client_id = '1U3YNsKrnM93padDO18r'
+    client_secret = '7RbHN9amGw'
+    url = "https://openapi.naver.com/v1/search/movie?query=e&display=5&genre="+genre_dict['inputValue']  # json 결과
+    header = {
+        "X-Naver-Client-Id":client_id,
+        "X-Naver-Client-secret":client_secret
+    }
+    res = json.loads(requests.get(url,headers=header).text)
+    # result에 영화정보들이 담겨있다.
+    return JsonResponse(res['items'],safe=False)
+
 # 해당영화클릭하는순간, 저장되는
 @api_view(['POST'])
 def save_movie(request):

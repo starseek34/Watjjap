@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
-              <SearchBar v-if="true"  />
+              <SearchBar v-if="true" @input-change="goToSearch" />
             </a>                
             <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
               
@@ -65,7 +65,7 @@ export default {
       errMsg: '',
       isLoggedIn: false,
       bg_img: "./assets/background.jpg",
-      //bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
+      // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
   methods: {
@@ -79,6 +79,7 @@ export default {
       .then(res => {
         this.iserr = false
         this.setCookie(res.data.key)
+<<<<<<< HEAD
         //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
         const cur_url = document.location.href;
         console.log(cur_url)
@@ -89,6 +90,9 @@ export default {
             this.$router.go()
           }
 
+=======
+        this.$router.push({name:'Home'})
+>>>>>>> 5c47f915231ac02f9a3da82d3a414604b2f7b9eb
         })
       .catch(err => {
         console.log(err.response.data)

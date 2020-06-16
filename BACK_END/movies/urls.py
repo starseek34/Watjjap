@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:movie_pk>/delete/',views.movie_delete),
     #영화저장
     path('save_movie/', views.save_movie), 
+    path('search_genre/<str:inputValue>', views.search_genre),
 ]
