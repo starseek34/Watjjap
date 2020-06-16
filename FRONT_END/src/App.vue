@@ -65,7 +65,7 @@ export default {
       errMsg: '',
       isLoggedIn: false,
       bg_img: "./assets/background.jpg",
-      //bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
+      // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
   methods: {

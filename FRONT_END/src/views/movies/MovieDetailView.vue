@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <img style="mw-100" :src="poster" alt="영화포스터_헤더">
-    </div>
-    <div>
       <div class="row">
         <div class="col-4 d-flex justify-content-end m-3">
           <img :src="poster" alt="영화포스터_상세보기">
@@ -99,9 +96,8 @@ export default {
           .catch(err => console.error(err))
 
         const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
-        console.log(oneGenre)
 
-        axios.get(SERVER_URL + 'search/' + oneGenre)
+        axios.get(SERVER_URL + 'search_genre/' + oneGenre)
           .then(res => this.similarMovies = res.data)
           .catch(err => console.error(err))
       })
@@ -111,13 +107,16 @@ export default {
     poster(){
       return this.movieInfo.image
     },
+    poster2(){
+      return this.movieInfo.image2
+    },
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
     }
   }
 }
 </script>
-
+  
 <style>
 
 </style>
