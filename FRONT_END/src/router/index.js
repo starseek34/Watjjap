@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
+import Modal from '../components/Modal.vue'
 
 // movies
 import RecommendMovieView from '../views/movies/RecommendMovieView.vue'
@@ -18,6 +19,16 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home,
+  },
+  {
+    path: '/home',
+    name: 'Home2',
+    component: Home,
+  },
+  {
+    path: '/modal',
+    name: 'Modal',
+    component: Modal,
   },
   {
     path: '/movies/recommend',
