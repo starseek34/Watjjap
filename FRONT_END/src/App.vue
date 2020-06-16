@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
+<div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
     <nav id="mynav" class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
@@ -66,17 +66,10 @@ export default {
       errMsg: '',
       isLoggedIn: false,
       bg_img: require('./assets/header.jpg'),
+      // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
   methods: {
-    modal_close(cur_url) {
-      if (cur_url == 'http://localhost:8080/#' || cur_url!='http://localhost:8080/movies/detail#' ){
-            this.$router.go()
-          }else if(cur_url=='http://localhost:8080/movies/detail#'){
-            this.$router.push({name: 'Home' })          
-            this.$router.go()
-          }
-    },
   
      setCookie(token){
       this.$cookies.set('auth-token',token)
@@ -89,7 +82,14 @@ export default {
         this.setCookie(res.data.key)
         //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
         const cur_url = document.location.href;
-        this.modal_close(cur_url)
+        console.log(cur_url)
+          if (cur_url == 'http://localhost:8080/#'){
+            this.$router.go()
+          }else{
+            this.$router.go()
+            this.$router.push({name: 'Home' })          
+            
+          }
 
         })
       .catch(err => {
@@ -97,20 +97,17 @@ export default {
         this.errMsg = "아이디 또는 비밀번호를 확인해주세요."
         this.iserr = true
       })
-       //completed
+       
      },
      
     signup(signupData){
       axios.post(SERVER_URL + '/rest-auth/signup/', signupData)
       .then(res => {
         this.setCookie(res.data.key)
-        //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
-        const cur_url = document.location.href;
-        this.modal_close(cur_url)     
+        this.$router.go()        
       })
       .catch(err => this.errorMessages=err.response.data)
     },
-
     logout(){
       const requestHeaders = {
         headers: {
@@ -129,7 +126,7 @@ export default {
   mounted(){
      this.isLoggedIn = this.$cookies.isKey('auth-token')
   },
-  watch:{
+   watch:{
     '$route'(to){
       
     console.log(to.path)
@@ -142,10 +139,10 @@ export default {
         document.getElementById('mynav').classList.add("bg-dark")
         this.isvisible = true
       }
-      //console.log(to.path)
       
     }
   }
+
 }
 </script>
 
@@ -154,7 +151,7 @@ html, body{
   height:100%;
 }
 #app {
-  /* background-image: url('./assets/header.jpg'); */
+  /* background-image: url('./assets/background.jpg'); */
   background-size: cover;
   height: 400px;
   margin: 0;
