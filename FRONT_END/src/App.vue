@@ -1,7 +1,7 @@
 <template>
 
 <div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
-    <nav id="mynav" class="navbar navbar-expand-lg navbar-light">
+    <nav id="mynav" class="navbar navbar-expand-lg navbar-light navbar-fixed-bottom">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
       </a>   
@@ -152,20 +152,31 @@ export default {
      this.mytoken = this.$cookies.get('auth-token')
      this.username = this.$cookies.get('username')
      this.password = this.$cookies.get('password')
-
+     if (this.$route.path == "/"){
+       this.isvisible = false
+       this.bg_img = require('./assets/background.jpg')
+        document.getElementById('mynav').classList.remove("bg-dark")
+     }else{
+       this.isvisible = true       
+        this.bg_img = ""
+        document.getElementById('mynav').classList.add("bg-dark")
+     }
   },
    watch:{
     '$route'(to){
       
     console.log(to.path)
       if (to.path=='/'){
-        this.bg_img = require('./assets/background.jpg')
-        document.getElementById('mynav').classList.remove("bg-dark")
         this.isvisible = false
+         this.bg_img = require('./assets/background.jpg')
+        document.getElementById('mynav').classList.remove("bg-dark")
+
       }else{
+        this.isvisible = true  
         this.bg_img = ""
         document.getElementById('mynav').classList.add("bg-dark")
-        this.isvisible = true
+
+
       }
       
     }

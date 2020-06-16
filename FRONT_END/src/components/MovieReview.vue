@@ -4,7 +4,10 @@
     <hr>
     <p>{{ review.content }}</p>
     <hr>
-    <p>엄지 3143 댓글 30</p>
+    <p>
+      <i class="fa fa-thumbs-up" aria-hidden="true">3143</i>
+      <i class="fa fa-comments" aria-hidden="true">30</i>
+  </p>
     <hr>
     <p>좋아요</p>
   </div>
