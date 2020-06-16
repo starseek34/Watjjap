@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <img style="mw-100" :src="poster" alt="영화포스터_헤더">
-    </div>
-    <div>
       <div class="row">
         <div class="col-4 d-flex justify-content-end m-3">
           <img :src="poster" alt="영화포스터_상세보기">
@@ -37,7 +34,9 @@
       </div>
       <hr>
       <h2>비슷한 작품</h2>
-      <SimilarMovie :similarMovies="similarMovies" v-for="similarMovie in similarMovies" :key="similarMovie.id"/>
+      <div class="row">
+        <SimilarMovie :similarMovie="similarMovie" v-for="similarMovie in similarMovies" :key="similarMovie.title" />
+      </div>
     </div>
     <!-- <MovieDetailItem :movieInfo='movieInfo'/> -->
   </div>
@@ -57,8 +56,6 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
 const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
-
-
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 export default {
@@ -98,9 +95,8 @@ export default {
           .catch(err => console.error(err))
 
         const oneGenre = this.movieInfo.genre.split('/')[0] + '/'
-        console.log(oneGenre)
 
-        axios.get(SERVER_URL + 'search/' + oneGenre)
+        axios.get(SERVER_URL + 'search_genre/' + oneGenre)
           .then(res => this.similarMovies = res.data)
           .catch(err => console.error(err))
       })
@@ -110,13 +106,16 @@ export default {
     poster(){
       return this.movieInfo.image
     },
+    poster2(){
+      return this.movieInfo.image2
+    },
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
     }
   }
 }
 </script>
-
+  
 <style>
 
 </style>
