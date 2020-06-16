@@ -4,6 +4,9 @@
 
       <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
     <hr>
+    <div v-if="this.$parent.authenticated">
+      <p>Welcome back, !</p>
+    </div>
     <h3>프로필 사진</h3>
     <hr>
     <h4>닉네임</h4>
@@ -23,9 +26,14 @@
 <script>
 export default {
   name: 'MyPageView',
+  data(){
+    return{
+    }
+  }
 }
-</script>
 
+</script>
+<!-- 해당유저것만 가져오는 -->
 <style>
 
 </style>
