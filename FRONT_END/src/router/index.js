@@ -46,10 +46,9 @@ Vue.use(VueRouter)
     component: MovieSearchListView,
   },
   {
-    path: '/movies/detail',
+    path: '/movies/detail/:movieId',
     name: 'MovieDetail',
     component: MovieDetailView,
-    props: {movie: false}
   },
 ]
 

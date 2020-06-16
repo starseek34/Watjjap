@@ -11,15 +11,30 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+const SERVER_URL = 'http://127.0.0.1:8000/movies/save_movie/'
+
+
 export default {
   name: 'MovieItemDetail',
   props: {
     movies: Array,
     movie: Object,
   },
+  data() {
+    return{
+      movieId: ''
+    }
+  },
   methods: {
     detail() {
-      this.$router.push({name:'MovieDetail', params:{movie: this.movie}})
+      axios.post(SERVER_URL, this.movie)
+        .then(res =>{
+          this.movieId = res.data['id']
+          console.log('movies/detail/'+this.movieId)
+          this.$router.push('/movies/detail/'+this.movieId)
+        })
     },
   },
   computed: {
