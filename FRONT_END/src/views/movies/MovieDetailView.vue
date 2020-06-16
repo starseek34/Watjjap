@@ -27,10 +27,11 @@
         </div>
       </div>
       <hr>
-      <h2>코멘트 20000+</h2>
-      <p @click='more_review'>더보기</p>
+      <h2>코멘트</h2>
+      <h4>{{ reviewCount }}</h4>
+      <p>더보기</p>
       <div class="row">
-        <MovieReview :review="review" v-for="review in reviews" :key="review.id"/>
+        <MovieReview :review="review" v-for="review in cutReviews" :key="review.id"/>
       </div>
       <hr>
       <h2>비슷한 작품</h2>
@@ -118,6 +119,12 @@ export default {
     },
     title(){
       return this.movieInfo.title.replace(/(<([^>]+)>)/gi,"")
+    },
+    reviewCount() {
+      return this.reviews.length
+    },
+    cutReviews() {
+      return this.reviews.slice(0, 2)
     }
   },
 }
