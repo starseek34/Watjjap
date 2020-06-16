@@ -1,7 +1,7 @@
 <template>
 
-  <div id="app" :style="{ 'background-image': 'url('+bg_img+');' }">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
+    <nav id="mynav" class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#" >
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
       </a>   
@@ -9,7 +9,11 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
+<<<<<<< HEAD
               <SearchBar v-if="true" />
+=======
+              <SearchBar v-if="isvisible"  />
+>>>>>>> sam
             </a>                
             <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
               
@@ -25,13 +29,13 @@
           </a>
           <a  @click="logout"  class="nav-item nav-link" href="#" v-if="isLoggedIn">
             <button  type="button" class="border-0 bg-transparent text-white">
-              로그아웃
+              <i style="font-size:40px;" class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
           </a>
           <a class="nav-item nav-link" href="#" v-if="isLoggedIn">
             <router-link v-if="isLoggedIn" :to="{ name: 'RecommendMovie' }"><i class="fa fa-star"  style="font-size:40px;" aria-hidden="true"></i></router-link>
           </a>
-          <a class="nav-item nav-link " href="#" v-if="isLoggedIn">            
+          <a  @click="mypage" class="nav-item nav-link " href="#" v-if="isLoggedIn">            
           <router-link v-if="isLoggedIn" :to="{ name: 'MyPage' }"><i class="fa fa-user-circle-o" style="font-size:40px;" aria-hidden="true"></i></router-link>
           </a>
         </div>
@@ -51,7 +55,7 @@ import SearchBar from './components/SearchBar.vue'
 import Modal from './components/Modal.vue'
 import axios from 'axios'
 
-const SERVER_URL = 'http://localhost:8000'
+const SERVER_URL = 'http://127.0.0.1:8000'
 
 export default {
   name: 'App',
@@ -61,14 +65,37 @@ export default {
   },
   data(){
     return{
+      userinfo: '',
+      isvisible: false,
       iserr: false,
       errMsg: '',
       isLoggedIn: false,
+<<<<<<< HEAD
       bg_img: "./assets/background.jpg",
+=======
+      bg_img: require('./assets/background.jpg'),
+      username: '',
+      password: '',
+>>>>>>> sam
       // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
   methods: {
+    mypage(){
+      const id = this.$cookies.get('username')
+      console.log('what')
+      //요청보내고
+      axios.post(SERVER_URL + '/accounts/user/mypage/', {'id':id})
+      .then(res=>{
+        //유저정보를 얻었음.
+         this.$cookies.set('userinfo',res.data)
+      })
+      .catch(err => {
+        
+        console.log(err.response.data)
+      })
+      //받아온값을 props로 내려보내주기.
+    },
   
      setCookie(token){
       this.$cookies.set('auth-token',token)
@@ -77,17 +104,24 @@ export default {
     login(loginData){
       axios.post(SERVER_URL + '/rest-auth/login/', loginData)
       .then(res => {
+        console.log('abcdef')
+        this.$cookies.set('username',loginData.username)
+        this.$cookies.set('password', loginData.password)
+        
         this.iserr = false
         this.setCookie(res.data.key)
+
         //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
         const cur_url = document.location.href;
         console.log(cur_url)
-          if (cur_url == 'http://localhost:8080/#' || cur_url!='http://localhost:8080/movies/detail#' ){
-            this.$router.go()
-          }else if(cur_url=='http://localhost:8080/movies/detail#'){
-            this.$router.push({name: 'Home' })          
-            this.$router.go()
-          }
+            if (cur_url == 'http://localhost:8080/#'){
+              this.$router.go()
+
+            }else{
+              this.$router.go()
+              this.$router.push({name: 'Home' })          
+              
+            }
 
         })
       .catch(err => {
@@ -123,7 +157,28 @@ export default {
   },
   mounted(){
      this.isLoggedIn = this.$cookies.isKey('auth-token')
+     this.mytoken = this.$cookies.get('auth-token')
+     this.username = this.$cookies.get('username')
+     this.password = this.$cookies.get('password')
+
   },
+   watch:{
+    '$route'(to){
+      
+    console.log(to.path)
+      if (to.path=='/'){
+        this.bg_img = require('./assets/background.jpg')
+        document.getElementById('mynav').classList.remove("bg-dark")
+        this.isvisible = false
+      }else{
+        this.bg_img = ""
+        document.getElementById('mynav').classList.add("bg-dark")
+        this.isvisible = true
+      }
+      
+    }
+  }
+
 }
 </script>
 
