@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <a href="#">설정</a>
+  <div class="container alert card" style="background-color: rgba(237,237,237,0.5)">
+      <a href="#" class="d-flex justify-content-end"><i class="fa fa-cog" style="font-size: 40px;" aria-hidden="true"></i></a>
+
+      <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
+    <hr>
     <h3>프로필 사진</h3>
+    <hr>
     <h4>닉네임</h4>
     <p>프로필이 없습니다.</p>
     <hr>
     <h5>취향분석</h5>
     <hr>
-    <router-link :to="{ name: 'RecommendMovie'}">
-      <div class="btn btn-success">
+    <div class="btn btn-success">
         <h5>영화</h5>
-        <p>*</p>
+        <p>지금까지 평가한 영화</p>
         <p>304</p>
-      </div>
-    </router-link>
-
+    </div>
+    
   </div>
 </template>
 

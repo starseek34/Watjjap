@@ -65,7 +65,7 @@ export default {
       iserr: false,
       errMsg: '',
       isLoggedIn: false,
-      bg_img: require('./assets/header.jpg'),
+      bg_img: require('./assets/background.jpg'),
       // bg_img:'https://images.mypetlife.co.kr/content/uploads/2019/09/06150205/cat-baby-4208578_1920-1024x683.jpg',
     }
   },
@@ -131,7 +131,7 @@ export default {
       
     console.log(to.path)
       if (to.path=='/'){
-        this.bg_img = require('./assets/header.jpg')
+        this.bg_img = require('./assets/background.jpg')
         document.getElementById('mynav').classList.remove("bg-dark")
         this.isvisible = false
       }else{
