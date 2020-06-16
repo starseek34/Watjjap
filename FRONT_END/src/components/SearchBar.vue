@@ -10,8 +10,7 @@ export default {
 
   methods: {
     onInput(event) {
-      this.$emit('input-change', event.target.value)
-      this.$router.push({ name: 'MovieSearchList' })
+      this.$router.push('/movies/search/'+event.target.value)
     },
   },
   
