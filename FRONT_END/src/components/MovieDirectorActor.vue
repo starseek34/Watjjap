@@ -1,12 +1,14 @@
 <template>
   <div class="row">
-    <div class="col-6">
-      <h3>{{ director }}</h3>
-      <p>감독</p>
+    <div class="col-6 p-2" v-for="director in directors" :key="director.id">
+      <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
+      <h4>{{ director }}</h4>
+      <span>감독</span>
     </div>
-    <div class="col-6" v-for="actor in actors" :key="actor.id">
-      <h3>{{ actor }}</h3>
-      <p>주연</p>
+    <div class="col-6 p-2" v-for="actor in actors" :key="actor.id">
+      <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
+      <h4>{{ actor }}</h4>
+      <span>주연</span>
     </div>
   </div>
 </template>
@@ -18,11 +20,11 @@ export default {
     movieInfo: Object,
   },
   computed: {
-    director() {
-      return this.movieInfo.director.replace('|', '')
+    directors() {
+      return this.movieInfo.director.slice(0, -1).split('|', 2)
     },
     actors() {
-      return this.movieInfo.actor.split('|', 5)
+      return this.movieInfo.actor.slice(0, -1).split('|', 4)
     }
   }
 }

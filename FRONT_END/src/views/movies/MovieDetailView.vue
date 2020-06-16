@@ -27,7 +27,7 @@
         </div>
       </div>
       <hr>
-      <div class="row">
+      <div class="row p-1">
         <h2 class="col-11">코멘트</h2>
         <h5 @click="isTotalReviews" class="col-1 stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
         <h4 class="col-2">총 {{ reviewCount }}개</h4>
@@ -76,12 +76,9 @@ export default {
     }
   },
   methods:{
-    more_review(){
-      this.$router.push('/movies/detail/'+this.movieInfo.id+'/review')
-    },
     isTotalReviews() {
       this.reviewFlag = !this.reviewFlag
-    }
+    },
   },
   mounted(){
     axios.get(SERVER_URL + this.$route.params.movieId + '/')

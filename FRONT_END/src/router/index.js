@@ -8,7 +8,7 @@ import Modal from '../components/Modal.vue'
 import RecommendMovieView from '../views/movies/RecommendMovieView.vue'
 import MovieSearchListView from '../views/movies/MovieSearchListView.vue'
 import MovieDetailView from '../views/movies/MovieDetailView.vue'
-import ReviewView from '../views/movies/ReviewView.vue'
+import ReviewDetailView from '../views/movies/ReviewDetailView.vue'
 
 // accounts
 import MyPageView from '../views/accounts/MyPageView.vue'
@@ -52,9 +52,9 @@ Vue.use(VueRouter)
     component: MovieDetailView,
   },
   {
-    path: 'movies/detail/:movieId/review',
-    name: 'Review',
-    component: ReviewView,
+    path: 'movies/detail/:movieId/:reviewId',
+    name: 'ReviewDetail',
+    component: ReviewDetailView,
   }
 ]
 
