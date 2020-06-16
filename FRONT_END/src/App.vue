@@ -69,6 +69,14 @@ export default {
     }
   },
   methods: {
+    modal_close(cur_url) {
+      if (cur_url == 'http://localhost:8080/#' || cur_url!='http://localhost:8080/movies/detail#' ){
+            this.$router.go()
+          }else if(cur_url=='http://localhost:8080/movies/detail#'){
+            this.$router.push({name: 'Home' })          
+            this.$router.go()
+          }
+    },
   
      setCookie(token){
       this.$cookies.set('auth-token',token)
@@ -81,13 +89,7 @@ export default {
         this.setCookie(res.data.key)
         //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
         const cur_url = document.location.href;
-        console.log(cur_url)
-          if (cur_url == 'http://localhost:8080/#' || cur_url!='http://localhost:8080/movies/detail#' ){
-            this.$router.go()
-          }else if(cur_url=='http://localhost:8080/movies/detail#'){
-            this.$router.push({name: 'Home' })          
-            this.$router.go()
-          }
+        this.modal_close(cur_url)
 
         })
       .catch(err => {
@@ -102,7 +104,9 @@ export default {
       axios.post(SERVER_URL + '/rest-auth/signup/', signupData)
       .then(res => {
         this.setCookie(res.data.key)
-        this.$router.go()        
+        //현재페이지가 home이면 뒤로가기, 아니면 home으로 가라
+        const cur_url = document.location.href;
+        this.modal_close(cur_url)     
       })
       .catch(err => this.errorMessages=err.response.data)
     },
