@@ -17,9 +17,6 @@ export default {
   components: {
     MovieItem,
   },
-  props:{
-    inputValue: String
-  },
   data(){
     return {
       inputValue : '',
@@ -39,16 +36,6 @@ export default {
         .catch(err => console.error(err))
     }
   },
-  computed:{
-    movies(inputValue){
-      this.searchValue = inputValue
-      axios.get(SERVER_URL+this.searchValue)
-        .then(res => this.movies = res.data)
-        .catch(err => console.error(err))
-      return this.movies
-    }
-  }
-
 }
 </script>
 

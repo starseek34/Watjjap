@@ -68,19 +68,18 @@ export default {
   },
   data(){
     return{
-      apiInfo : this.$route.params.movie,
       similarMovies : [],
       movieInfo : {},
       videos : [],
       reviews : [],
-      inputValue: '',
     }
   },
   mounted(){
-    axios.post(SERVER_URL + 'save_movie/', this.apiInfo, )
+    console.log('반가워'+this.$route.params.movieId)
+    axios.get(SERVER_URL + this.$route.params.movieId)
       .then(res => {
         this.movieInfo = res.data
-
+        console.log(this.movieInfo)
         axios.get(SERVER_URL + this.movieInfo.id + '/reviews/')
           .then(res => this.reviews = res.data)
           .catch(err => console.error(err))

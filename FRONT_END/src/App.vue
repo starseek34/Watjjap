@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
-              <SearchBar v-if="true" @input-change="goToSearch" />
+              <SearchBar v-if="true" />
             </a>                
             <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
               
