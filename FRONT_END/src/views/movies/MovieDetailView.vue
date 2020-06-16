@@ -28,7 +28,7 @@
       </div>
       <hr>
       <h2>코멘트 20000+</h2>
-      <p>더보기</p>
+      <p @click='more_review'>더보기</p>
       <div class="row">
         <MovieReview :review="review" v-for="review in reviews" :key="review.id"/>
       </div>
@@ -69,6 +69,11 @@ export default {
       reviews : [],
       imageError : false,
       defaultImage: require('../../assets/movie_poster_default.jpg')
+    }
+  },
+  methods:{
+    more_review(){
+      this.$router.push('/movies/detail/'+this.movieInfo.id+'/review')
     }
   },
   mounted(){
