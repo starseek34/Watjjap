@@ -32,8 +32,8 @@
             <h2>코멘트</h2>
           </div>
           <div>
-            <h5 v-if="isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
-            <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">접기</h5>
+            <h5 v-if="isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">접기</h5>
+            <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
           </div>
         </div>
           <h5>총 {{ reviewCount }}개</h5>
@@ -141,7 +141,7 @@ export default {
       return this.reviews.length
     },
     changeReviews() {
-      if (this.reviewFlag) {
+      if (!this.reviewFlag) {
         return this.reviews.slice(0, 1)
       } else {
         return this.reviews
