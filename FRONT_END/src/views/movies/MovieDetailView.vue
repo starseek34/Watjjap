@@ -64,8 +64,8 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
-const API_KEY = process.env.VUE_APP_API_KEY
-const API_URL = process.env.VUE_APP_API_URL
+const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
+const API_URL = process.env.VUE_APP_YOUTUBE_API_URL
 
 
 export default {
@@ -90,6 +90,8 @@ export default {
     },
   },
   mounted(){
+    console.log('hihi')
+    console.log(process.env)
     axios.get(SERVER_URL + this.$route.params.movieId + '/')
       .then(res => {
         this.movieInfo = res.data
