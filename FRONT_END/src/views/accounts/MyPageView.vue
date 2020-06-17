@@ -1,7 +1,7 @@
 <template>
   <div class="m-3 alert card">
   <!-- <div class="container alert card" style="background-color: rgba(237,237,237,0.5)"> -->
-      <a href="#" class="d-flex justify-content-end"><i class="fa fa-cog" style="font-size: 40px;" aria-hidden="true"></i></a>
+      <a @click="alert" style="text-decoration: none;" href="#" class="d-flex justify-content-end"><i class="fa fa-cog" style="font-size: 40px;" aria-hidden="true"></i></a>
 
       <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
     <hr>
@@ -15,7 +15,7 @@
     <hr>
     <h5>취향분석</h5>
     <hr>
-    <div class="btn btn-success">
+    <div @click="alert" class="btn btn-success">
         <h5>영화</h5>
         <p>지금까지 평가한 영화</p>
         <p>304</p>
@@ -33,6 +33,9 @@ export default {
     }
   },
  methods:{
+   alert() {
+     alert("서비스 구현 중 입니다.")
+   }
  }
      
 }
