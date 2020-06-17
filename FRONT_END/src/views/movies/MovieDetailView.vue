@@ -33,7 +33,7 @@
           </div>
           <div>
             <h5 v-if="isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
-            <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">펼치기</h5>
+            <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">접기</h5>
           </div>
         </div>
           <h5>총 {{ reviewCount }}개</h5>
