@@ -31,7 +31,7 @@
         <h5 v-if="isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
         <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">펼치기</h5>
       </div>
-      <div class="m-3">
+      <div class="m-3 list-group">
         <MovieReview :review="review" v-for="review in changeReviews" :key="review.id"/>
       </div>
       <div class="m-3">
@@ -57,7 +57,7 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
-const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
+const API_KEY = 'AIzaSyA_sTQPTQkYZrX8yF9tn77nw-8dYn9Refs'
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 export default {

@@ -1,6 +1,6 @@
 <template>
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" :src="videoUrl" allowfullscreen></iframe>
+  <div class="list-group-item embed-responsive embed-responsive-16by9">
+    <iframe class="p-3 embed-responsive-item" :src="videoUrl" allowfullscreen></iframe>
   </div>
 </template>
 
