@@ -61,7 +61,7 @@
       <div class="modal-dialog">
         <div class="modal-content m-auto" style="width:380px;">
           <div class="modal-body">
-            <h2 class="font-weight-bolder m-3" style="color:#f71972" >WATCHA</h2>
+            <h2 class="font-weight-bolder m-3" style="color:#f71972" >WAJJAB</h2>
               <h6 class="font-weight-bold m-4">회원가입</h6>
               <div class="form-group w-100 mx-auto mb-2">
                 <input type="text" class="form-control border-0" style="background-color:#f5f5f5;" id="name" aria-describedby="emailHelp" placeholder="이름">
