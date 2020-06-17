@@ -30,7 +30,7 @@ export default {
   methods: {
     reviewDetail() {
       this.reviewId = this.review.id
-      this.$router.push(this.$route.params.movieId + '/' + this.reviewId)
+      this.$router.push('/movies/detail/'+this.$route.params.movieId+'/'+this.reviewId)
     }
   }
 }

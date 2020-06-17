@@ -52,7 +52,7 @@ Vue.use(VueRouter)
     component: MovieDetailView,
   },
   {
-    path: 'movies/detail/:movieId/:reviewId',
+    path: '/movies/detail/:movieId/:reviewId',
     name: 'ReviewDetail',
     component: ReviewDetailView,
   }
