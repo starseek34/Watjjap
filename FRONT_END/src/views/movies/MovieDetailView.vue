@@ -56,8 +56,8 @@ import SimilarMovie from '../../components/SimilarMovie.vue'
 
 const SERVER_URL = 'http://127.0.0.1:8000/movies/'
 
-const API_KEY = 'AIzaSyDOcU2YV3kprnZTh1piCpd1PJdiAN1i8vc'
-const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+const API_KEY = process.env.VUE_APP_API_KEY
+const API_URL = process.env.VUE_APP_API_URL
 
 export default {
   name: 'MovieDetailView',
