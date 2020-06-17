@@ -40,7 +40,7 @@
     <Modal  @submit-login-data="login" @submit-signup-data="signup" :iserr="iserr" :errMsg="errMsg"/>
     
     <div class="container">
-      <router-view  />
+      <router-view  :img1="img1" :img2="img2" :img3="img3"/>
     </div>
     
   </div>
@@ -61,6 +61,9 @@ export default {
   },
   data(){
     return{
+      img1: require('./assets/vue.png'),
+      img2: require('./assets/django.png'),
+      img3: require('./assets/rest.png'),
       userinfo: '',
       isvisible: false,
       iserr: false,
