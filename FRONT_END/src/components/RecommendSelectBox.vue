@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <select id='genre' class="custom-select">
+  <div class="row m-3">
+    <select @change='search_genre' id='genre' class="custom-select">
       <option selected>당신을 위한 랜덤추천!</option>
       <option value="드라마">드라마</option>
       <option value="판타지">판타지</option>
@@ -24,7 +24,6 @@
       <option value="에로">에로</option>
       <option value="서스펜스">서스펜스</option>
     </select>
-    <button class="btn btn-primary" @click='search_genre'>장르 추천!</button>
   </div>
 
 </template>

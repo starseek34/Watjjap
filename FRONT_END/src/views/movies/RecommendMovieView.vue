@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div>
-      <p class="text-center">"어디에서, 어떻게, 누구와 보는가가 영화의 완성이다." -왕가위</p>
-      <RecommendSelectBox @search_genre='searching_genre' />
-    </div>
-        <MovieItem :movies='movies'/>
+  <div class="m-3">
+    <p class="text-center">"어디에서, 어떻게, 누구와 보는가가 영화의 완성이다." -왕가위</p>
+    <RecommendSelectBox @search_genre='searching_genre' />
+    <MovieItem :movies='movies'/>
   </div>
 </template>
 
