@@ -1,12 +1,12 @@
 <template>
-  <div class="m-1">
-    <h2 class="m-3">기본정보</h2>
-    <div class="m-3">
+  <div class="m-2">
+    <h2>기본정보</h2>
+    <div class="p-3">
       <h4>{{ title }}</h4>
       <h5>{{ movieInfo.pubDate }} {{ country }} {{ genre }}</h5>
       <h5>{{ movieInfo.runningTime }}</h5>
     </div>
-    <div class="m-3">
+    <div class="p-3">
       <p>{{ plot }}</p>
     </div>
   </div>

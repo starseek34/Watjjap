@@ -1,13 +1,13 @@
 <template>
-  <div class="row">
-    <div class="col-6 p-2 d-flex justify-content-center" v-for="director in directors" :key="director.id">
+  <div class="row m-3">
+    <div class="col-6 p-2 d-flex" v-for="director in directors" :key="director.id">
       <i class="fa fa-user" style="font-size:100px; color:gray" aria-hidden="true"></i>
       <div class="d-flex flex-column p-3">
         <h4>{{ director }}</h4>
         <p>감독</p>
       </div>
     </div>
-    <div class="col-6 p-2 d-flex justify-content-center" v-for="actor in actors" :key="actor.id">
+    <div class="col-6 p-2 d-flex" v-for="actor in actors" :key="actor.id">
       <i class="fa fa-user"  style="font-size:100px; color:gray" aria-hidden="true"></i>
       <div class="d-flex flex-column p-3">
         <h4>{{ actor }}</h4>
