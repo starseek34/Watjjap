@@ -3,6 +3,8 @@
     <div @click="reviewDetail" class="col m-3 bg-light">
       <i class="fa fa-user-circle-o" style="font-size:40px;" aria-hidden="true"></i>
       <h5>{{ review.user.username }}</h5>
+      <p class="font-weight-bold">{{ review.title }}</p>
+      
       <hr>
       <p>{{ review.content }}</p>
       <hr>

@@ -29,7 +29,7 @@
         <h2>코멘트</h2>
         <h4>총 {{ reviewCount }}개</h4>
         <h5 v-if="isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">더보기</h5>
-        <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">펼치기</h5>
+        <h5 v-if="!isReviewFlag" @click="isTotalReviews" class="stretched-link font-weight-bold" style="position: relative; color:#f71972; cursor:pointer;">접기</h5>
       </div>
       <div class="m-3 list-group">
         <MovieReview :review="review" v-for="review in changeReviews" :key="review.id"/>
