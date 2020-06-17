@@ -2,38 +2,38 @@
 
 <div id="app" v-bind:style="{ 'background-image': 'url(' + bg_img + ')' }">
     <nav id="mynav" class="navbar navbar-expand-lg navbar-light navbar-fixed-bottom">
-      <a class="navbar-brand" href="#" >
+      <p class="navbar-brand">
       <router-link :to="{ name: 'Home' }" class="font-weight-bold" style="color:#f71972">WAJJAB</router-link>
-      </a>   
+      </p>
       <div class="w-100" id="navbarNavAltMarkup">
         <div class="d-flex justify-content-end">
             <!-- search -->
             <a class="nav-item nav-link m-auto" style="width: 50%;" href="#">
               <SearchBar v-if="isvisible"  />
             </a>                
-            <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
+            <p class="nav-item nav-link" v-if="!isLoggedIn">
               
             <button type="button" class="border-0 bg-transparent text-white" data-toggle="modal" data-target="#loginModal">
               로그인
             </button>
-          </a>
+          </p>
           
-          <a class="nav-item nav-link" href="#" v-if="!isLoggedIn">
+          <p class="nav-item nav-link" href="#" v-if="!isLoggedIn">
             <button type="button" class="border-0 text-white rounded" style="background-color:#f71972" data-toggle="modal" data-target="#signupModal">
               회원가입
             </button>
-          </a>
-          <a  @click="logout"  class="nav-item nav-link" href="#" v-if="isLoggedIn">
+          </p>
+          <p @click="logout"  class="nav-item nav-link" v-if="isLoggedIn">
             <button  type="button" class="border-0 bg-transparent text-white">
               <i style="font-size:40px;" class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
-          </a>
-          <a class="nav-item nav-link" href="#" v-if="isLoggedIn">
+          </p>
+          <p class="nav-item nav-link" v-if="isLoggedIn">
             <router-link v-if="isLoggedIn" :to="{ name: 'RecommendMovie' }"><i class="fa fa-star"  style="font-size:40px;" aria-hidden="true"></i></router-link>
-          </a>
-          <a  @click="mypage" class="nav-item nav-link " href="#" v-if="isLoggedIn">            
+          </p>
+          <p  @click="mypage" class="nav-item nav-link " v-if="isLoggedIn">            
           <router-link v-if="isLoggedIn" :to="{ name: 'MyPage' }"><i class="fa fa-user-circle-o" style="font-size:40px;" aria-hidden="true"></i></router-link>
-          </a>
+          </p>
         </div>
       </div>
     </nav>
